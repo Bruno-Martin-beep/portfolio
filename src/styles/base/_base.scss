@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-weight: 400;
+
+  &::selection {
+    @include themed {
+      color: t("bg");
+      background-color: t("text");
+    }
+  }
+}
+
+html,
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.bg {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 0;
+  @include themed {
+    background-color: t("bg");
+  }
+  transition: background-color 0.5s ease-out;
+}
+
+.bgProj {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 3;
+  @include themed {
+    background-color: t("bgBlue");
+  }
+  transition: background-color 0.5s ease-out;
+  opacity: 0;
+}
+
+#my-scrollbar {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.section {
+  overflow: hidden;
+  position: relative;
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+h1 {
+  position: relative;
+  margin: 0 0 0 14vw;
+  letter-spacing: 0.6vw;
+  font-family: "Saol-Display", serif;
+  font-size: clamp(13vh, 13vw, 30vh);
+  font-weight: 400;
+  line-height: 100%;
+  @include themed {
+    color: t("text");
+  }
+  transition: color 0.5s ease-out;
+}
+
+h2 {
+  display: inline-block;
+  font-family: "Saol-Display", serif;
+  // text-transform: uppercase;
+  font-size: clamp(7vh, 12vw, 14vh);
+  font-weight: 400;
+  line-height: 100%;
+  margin: 0 14vh 0 14vh;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-align: center;
+  @include themed {
+    color: t("text");
+  }
+  transition: color 0.5s ease-out;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  @include themed {
+    color: t("text");
+  }
+  transition: color 0.5s ease-out;
+}
+
+.bold {
+  font-weight: 600;
+}

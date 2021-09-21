@@ -1,0 +1,21 @@
+.cont_cont {
+  width: 80vw;
+  margin: 0 10vw 0 10vw;
+  display: flex;
+  justify-content: center;
+}
+
+.cont_info {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3vh, 3vw, 4vh);
+  // margin-right: 5vw;
+}
+
+.cont_text {
+  font-size: clamp(4vh, 4vw, 8vh);
+}
+
+.cont_textSpace {
+  margin-left: 4vw;
+}

@@ -1,0 +1,25 @@
+.skill_cont {
+  width: 75vw;
+  height: 70vh;
+  padding: 0 12.5vw 0 12.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.skill_text {
+  font-size: clamp(2vh, 2vw, 3vw);
+}
+
+.skill_icon {
+  display: flex;
+  justify-content: center;
+  gap: 10vw;
+  transform: rotate(-4deg);
+}
+
+.skill_bracket {
+  font-size: clamp(10vh, 25vw, 25vh);
+  font-family: "Saol-Display", serif;
+  line-height: 100%;
+}

@@ -1,0 +1,12 @@
+.scrollbar-track.scrollbar-track-x {
+  opacity: 1;
+  background-color: hsla(35, 10%, 50%, 0.8);
+  height: 1vh;
+}
+
+.scrollbar-thumb.scrollbar-thumb-x {
+  border-radius: 0px;
+  background-color: hsl(35, 80%, 86%);
+  height: 1.5vh;
+  /* left: 2px; */
+}

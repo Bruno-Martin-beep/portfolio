@@ -1,0 +1,19 @@
+/// utilities
+
+@import "utilities/colors"; 
+@import "utilities/fonts"; 
+@import "utilities/media-queries";
+
+/// base
+
+@import "base/base";
+
+/// components
+
+@import "components/navbar";
+@import "components/scrollbar";
+@import "components/home";
+@import "components/aboutme";
+@import "components/project";
+@import "components/skills";
+@import "components/contact";

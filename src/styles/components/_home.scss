@@ -1,0 +1,27 @@
+.home {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+}
+
+.firtN::before {
+  content: "<";
+  position: absolute;
+  transform: translateX(-100%);
+}
+
+.sectN::after {
+  content: "/>";
+}
+
+.pdf {
+  position: absolute;
+  bottom: 3vh;
+  right: 4vw;
+  font-size: clamp(4vh, 2vw, 5vh);
+  font-family: 'Montserrat', sans-serif;
+}

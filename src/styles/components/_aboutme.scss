@@ -1,0 +1,41 @@
+.about_cont {
+  width: 130vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10vh;
+  padding: 0 10vw 0 10vw;
+}
+
+.about_cont2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about_text {
+  max-width: 80vw;
+  font-size: clamp(4vh, 4vw, 5vh);
+}
+
+.about_text2 {
+  width: max-content;
+  max-width: 80vw;
+  font-size: clamp(4vh, 4vw, 5vh);
+}
+
+.about_icon {
+  flex-grow: 1;
+  display: block;
+  height: 15vh;
+  width: 15vh;
+  overflow: hidden;
+}
+
+.svg_color {
+  @include themed {
+    fill: t("text")
+  }
+  transition: fill 0.5s ease-out;
+}
