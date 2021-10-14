@@ -1,6 +1,12 @@
 .about_cont {
-  width: 130vw;
-  height: 100vh;
+  @include portrait {
+    width: 100vw;
+    min-height: 100vh;
+  }
+  @include landscape {
+    width: 130vw;
+    height: 100vh;
+  }
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,26 +16,40 @@
 
 .about_cont2 {
   display: flex;
-  justify-content: space-between;
+  @include portrait {
+    justify-content: center;
+    // gap: 10vw;
+  }
+  @include landscape {
+    justify-content: space-between;
+  }
   align-items: center;
 }
 
 .about_text {
-  max-width: 80vw;
-  font-size: clamp(4vh, 4vw, 5vh);
-}
-
-.about_text2 {
-  width: max-content;
-  max-width: 80vw;
-  font-size: clamp(4vh, 4vw, 5vh);
+  @include portrait {
+    max-width: 50vw;
+    font-size: clamp(2.5vh, 4vw, 5vh);
+  }
+  @include landscape {
+    max-width: 80vw;
+    font-size: clamp(4vh, 4vw, 5vh);
+  }
 }
 
 .about_icon {
-  flex-grow: 1;
   display: block;
-  height: 15vh;
-  width: 15vh;
+  @include portrait {
+    width: clamp(10vh, 20vw, 12vh);
+    height: clamp(10vh, 20vw, 12vh);
+    margin-left: clamp(2vh, 8vw, 10vh);
+    margin-right: clamp(2vh, 8vw, 10vh);
+  }
+  @include landscape {
+    flex-grow: 1;
+    width: 15vh;
+    height: 15vh;
+  }
   overflow: hidden;
 }
 

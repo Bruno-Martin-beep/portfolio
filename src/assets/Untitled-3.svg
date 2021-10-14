@@ -1,0 +1,10 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs>
+    <style>.cls-1,.cls-2{fill:none;}.cls-1{stroke:#1a1a1a;stroke-width:20px;}</style>
+  </defs>
+  <line id="line1" class="cls-1" y1="90" x2="240" y2="90"/>
+  <line id="line2" class="cls-1" y1="169" x2="240" y2="169"/>
+  <path id="line3" class="cls-1" d="M0,70H240"/>
+  <path id="line4" class="cls-1" d="M0,149H240"/>
+  <rect class="cls-2" width="240" height="240"/>
+</svg>

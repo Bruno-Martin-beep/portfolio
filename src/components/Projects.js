@@ -3,7 +3,6 @@ import shinji from "../assets/shinji.png";
 
 
 const Projects = () => {
-
   return (
     <section className="section">
       <h2>Projects</h2>
@@ -20,12 +19,12 @@ const Projects = () => {
             <span className="bold">Gsap</span>.
           </p>
           <div className="proj_link">
-            <p className="proj_link">view live</p>
-            <p className="proj_link">view repo</p>
+            <a className="proj_link" target="_blank" rel="noreferrer" href="https://bruno-martin-beep.github.io/memory-game/">view live ›</a>
+            <a className="proj_link" target="_blank" rel="noreferrer" href="https://github.com/Bruno-Martin-beep/memory-game">view repo ›</a>
           </div>
         </div>
         <div className="proj_img">
-          <img src={shinji} alt="shinji" />
+          <img className="proj_img_size" src={shinji} alt="shinji" />
         </div>
       </div>
     </section>

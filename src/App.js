@@ -7,6 +7,7 @@ import Scrollbar from "smooth-scrollbar";
 import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 
 import ThemeProvider from "./components/Contexts/ThemeProvider";
+import useDeviceDetect from "./components/useDeviceDetect";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import AboutMe from "./components/AboutMe";
@@ -16,9 +17,11 @@ import Contact from "./components/Contact";
 
 function App() {
   const [scrollbar, setScrollbar] = useState(null);
+  const [mobileWarningRemove, setMobileWarningRemove] = useState(false);
+  const deviceType = useDeviceDetect();
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  const scrollbarResponsive = (horizontal) => {
+    Scrollbar.destroyAll();
 
     class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
       static pluginName = "horizontalScroll";
@@ -30,9 +33,15 @@ function App() {
 
         const { x, y } = delta;
 
+        if (horizontal) {
+          return {
+            y: 0,
+            x: Math.abs(x) > Math.abs(y) ? x : y,
+          };
+        }
         return {
-          y: 0,
-          x: Math.abs(x) > Math.abs(y) ? x : y,
+          y: Math.abs(x) > Math.abs(y) ? x : y,
+          x: 0,
         };
       }
     }
@@ -54,6 +63,12 @@ function App() {
     setScrollbar(bodyScrollBar);
 
     ScrollTrigger.scrollerProxy("#my-scrollbar", {
+      scrollTop(value) {
+        if (arguments.length) {
+          bodyScrollBar.scrollTop = value;
+        }
+        return bodyScrollBar.scrollTop;
+      },
       scrollLeft(value) {
         if (arguments.length) {
           bodyScrollBar.scrollLeft = value;
@@ -84,10 +99,10 @@ function App() {
       animation: backColor,
       trigger: ".proj_cont",
       scroller: ".scroller",
-      horizontal: true,
+      horizontal: horizontal,
       toggleActions: "play reverse play reverse",
       start: "top-=30% top",
-      end: "end+=50% top",
+      end: "end+=70% top",
     });
 
     ///asteriskRotation
@@ -107,7 +122,7 @@ function App() {
     ScrollTrigger.create({
       trigger: ".scroller",
       scroller: ".scroller",
-      horizontal: true,
+      horizontal: horizontal,
       start: "center center",
       end: "+=250%",
       onUpdate({ getVelocity }) {
@@ -131,60 +146,62 @@ function App() {
 
     ///parallax
 
-    const parallax = gsap.to("h1", {
-      x: "20%",
-    });
-    // .to("h1", {
-    //   x: "20%",
-    // });
+    let parallax;
+
+    if (horizontal) {
+      parallax = gsap.to("h1", {
+        x: "25%",
+      });
+    } else {
+      parallax = gsap.to("h1", {
+        y: "22.5vh",
+      });
+    }
 
     ScrollTrigger.create({
       animation: parallax,
       trigger: ".scroller",
       scroller: ".scroller",
-      horizontal: true,
+      horizontal: horizontal,
       start: "top top",
       end: "+=100% end",
       scrub: true,
     });
+  };
 
-    // skew effect
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-    // let proxy = { skew: 0 },
-    //   skewSetter = gsap.quickSetter(".skewer", "skewX", "deg"),
-    //   clamp = gsap.utils.clamp(-20, 20);
+    ScrollTrigger.matchMedia({
+      "(orientation: landscape)": function () {
+        scrollbarResponsive(true);
+      },
 
-    // ScrollTrigger.create({
-    //   scroller: ".scroller",
-    //   horizontal: true,
-
-    //   onUpdate: (self) => {
-    //     let skew = clamp(self.getVelocity() / -200);
-    //     if (Math.abs(skew) > Math.abs(proxy.skew)) {
-    //       proxy.skew = skew;
-    //       gsap.to(proxy, {
-    //         skew: 0,
-    //         duration: 0.8,
-    //         ease: "power3",
-    //         overwrite: true,
-    //         onUpdate: () => skewSetter(proxy.skew),
-    //       });
-    //     }
-    //   },
-    // });
-
-    // gsap.set(".skewer", {
-    //   transformOrigin: "center center",
-    //   force3D: true,
-    // });
+      "(orientation: portrait)": function () {
+        scrollbarResponsive(false);
+      },
+    });
   }, []);
 
   return (
     <>
       <ThemeProvider>
+        {deviceType === "Mobile" && !mobileWarningRemove && (
+          <div className="mobileDevice">
+            <p
+              className="mobileDevice_text"
+              onClick={() => setMobileWarningRemove(true)}
+            >
+              This site was designed with landscape in mind, select "add to home
+              screen" in options for a better mobile experience.
+            </p>
+          </div>
+        )}
         <Navbar scrollbar={scrollbar} />
-          <div className="bg"></div>
-          <div className="bgProj"></div>
+        <div className="bg">
+          
+        </div>
+        <div className="bgProj"></div>
         <div id="my-scrollbar" className="scroller">
           <div className="wrapper">
             <Home />

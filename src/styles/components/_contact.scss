@@ -1,5 +1,6 @@
 .cont_cont {
   width: 80vw;
+  height: 100vh;
   margin: 0 10vw 0 10vw;
   display: flex;
   justify-content: center;
@@ -8,12 +9,22 @@
 .cont_info {
   display: flex;
   flex-direction: column;
-  gap: clamp(3vh, 3vw, 4vh);
-  // margin-right: 5vw;
+  justify-content: center;
+  @include portrait {
+    gap: 8vw;
+  }
+  @include landscape {
+    gap: clamp(3vh, 3vw, 4vh);
+  }
 }
 
 .cont_text {
-  font-size: clamp(4vh, 4vw, 8vh);
+  @include portrait {
+    font-size: 3.6vw;
+  }
+  @include landscape {
+    font-size: clamp(4vh, 4vw, 8vh);
+  }
 }
 
 .cont_textSpace {

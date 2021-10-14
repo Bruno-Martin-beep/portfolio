@@ -1,55 +1,115 @@
 .proj_cont {
-  height: 80vh;
-  padding: 20vh 20vw 0 20vw;
+  @include portrait {
+    width: 100vw;
+    height: 100vh;
+    // padding: 10vh 0 10vh 0;
+  }
+  @include landscape {
+    height: 80vh;
+    padding: 20vh 20vw 0 20vw;
+  }
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
 }
 
 .proj_info {
-  width: 65vh;
-  grid-column: 1 / 6;
-  grid-row: 5 / 10;
+  @include portrait {
+    width: 60vw;
+    height: 40vh;
+    margin-left: 2vw;
+    grid-row: 4 / 9;
+    grid-column: 1 / 6;
+    gap: 3vh;
+    align-self: center;
+    justify-content: end;
+  }
+  @include landscape {
+    width: 65vh;
+    grid-row: 5 / 10;
+    justify-content: space-between;
+    grid-column: 1 / 6;
+  }
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   z-index: 5;
 }
 
 .Proj_ftilte {
-  letter-spacing: 0.15vw;
-  font-size: clamp(4vh, 4.2vw, 5vh);
+  @include portrait {
+    letter-spacing: 0.8vw;
+    font-size: 5vw;
+  }
+  @include landscape {
+    letter-spacing: 0.15vw;
+    font-size: clamp(4vh, 4.2vw, 5vh);
+  }
   font-weight: 500;
 }
 
 .proj_stitle {
-  letter-spacing: 0.2vw;
-  font-size: clamp(5vh, 7vw, 7vh);
+  @include portrait {
+    letter-spacing: 1vw;
+    font-size: 5.9vw;
+  }
+  @include landscape {
+    letter-spacing: 0.2vw;
+    font-size: clamp(5vh, 7vw, 7vh);
+  }
   font-weight: 500;
 }
 
 .proj_text {
   width: 80%;
-  font-size: clamp(2.6vh, 3vw, 3vh);
-  // font-size: 1.5vw;
+  @include portrait {
+    font-size: 3vw;
+  }
+  @include landscape {
+    font-size: clamp(2.6vh, 3vw, 3vh);
+  }
 }
 
 .proj_link {
   display: flex;
-  gap: clamp(2vh, 2vw, 3vh);
+  @include portrait {
+    gap: 3vw;
+    font-size: 3.4vw;
+  }
+  @include landscape {
+    gap: clamp(2vh, 2vw, 3vh);
+    font-size: clamp(3vh, 3.5vw, 3.5vh);
+  }
   text-transform: uppercase;
-  font-size: clamp(2.6vh, 3vw, 3vh);
   font-weight: 600;
 }
 
 .proj_img {
-  width: 65vh;
-  height: 80vh;
-  grid-column: 5 / 11;
-  grid-row: 1 / 11;
+  @include portrait {
+    width: 50vw;
+    height: 50vh;
+    grid-column: 5 / 11;
+    grid-row: 4 / 11;
+  }
+  @include landscape {
+    width: 65vh;
+    height: 80vh;
+    grid-column: 5 / 11;
+    grid-row: 1 / 11;
+  }
   z-index: 1;
   display: flex;
   align-content: center;
   justify-content: center;
   overflow: hidden;
+}
+
+.proj_img_size {
+  @include portrait {
+    width: (50vh * (4/3));
+    height: 50vh;
+  }
+  @include landscape {
+    width: (80vh * (4/3));
+    height: 80vh;
+  }
 }

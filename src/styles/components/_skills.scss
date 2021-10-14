@@ -1,25 +1,61 @@
 .skill_cont {
-  width: 75vw;
-  height: 70vh;
-  padding: 0 12.5vw 0 12.5vw;
+  @include portrait {
+    width: 80vw;
+    height: 100vh;
+    justify-content: center;
+    gap: 15vh;
+  }
+  @include landscape {
+    width: 75vw;
+    height: 70vh;
+    padding: 0 12.5vw 0 12.5vw;
+    justify-content: space-around;
+  }
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .skill_text {
-  font-size: clamp(2vh, 2vw, 3vw);
+  @include portrait {
+    font-size: 4vw;
+  }
+  @include landscape {
+    font-size: clamp(2vh, 2vw, 3vw);
+  }
 }
 
 .skill_icon {
   display: flex;
   justify-content: center;
-  gap: 10vw;
+  gap: clamp(10vh, 5vw, 12vh);
   transform: rotate(-4deg);
+}
+
+.skill_svg {
+  width: clamp(9vh, 23vw, 23vh);
+  height: clamp(9vh, 23vw, 23vh);
+  position: absolute;
+  align-self: center;
+  opacity: 0;
+}
+
+.skill_svg_fill {
+  @include themed {
+    fill: t("text");
+  }
+  transition: fill 0.5s ease-out;
+}
+
+.skill_svg_stroke {
+  @include themed {
+    stroke: t("text");
+  }
+  transition: stroke 0.5s ease-out;
 }
 
 .skill_bracket {
   font-size: clamp(10vh, 25vw, 25vh);
   font-family: "Saol-Display", serif;
   line-height: 100%;
+  transform: translateY(-12%);
 }

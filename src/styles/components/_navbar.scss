@@ -12,46 +12,89 @@
 
 .navbar_themes {
   display: flex;
-  gap: 2vh;
-  margin-left: clamp(10vh, 10vw, 12vh);
+  @include portrait {
+    gap: 2vw;
+    margin-left: 6vw;
+  }
+  @include landscape {
+    gap: 2vh;
+    margin-left: clamp(10vh, 10vw, 12vh);
+  }
+}
+
+.themeButton {
+  width: clamp(2vh, 2vw, 3vh);
+  height: clamp(2vh, 2vw, 3vh);
+  border-radius: 50%;
+  @include themed {
+    border: 3px solid t("text");
+  }
+  transition: border 0.5s ease-out;
 }
 
 .lightT {
-  width: clamp(2vh, 2vw, 3vh);
-  height: clamp(2vh, 2vw, 3vh);
   background-color: $light;
-  border-radius: 50%;
-  @include themed {
-    border: 3px solid t("text");
-  }
-  transition: border 0.5s ease-out;
 }
 
 .darkT {
-  width: clamp(2vh, 2vw, 3vh);
-  height: clamp(2vh, 2vw, 3vh);
   background-color: $black;
-  border-radius: 50%;
-  @include themed {
-    border: 3px solid t("text");
-  }
-  transition: border 0.5s ease-out;
-  // border: 3px solid $text;
 }
 
 .navbar_sections {
   display: flex;
-  gap: 4vh;
-  margin-right: clamp(10vh, 10vw, 12vh);
+  @include portrait {
+    position: fixed;
+    flex-direction: column;
+    top: clamp(10vh, 10vw, 14vh);
+    // right: -100%;
+    right: 5.5vw;
+    gap: 5vw;
+    padding: clamp(2.5vh, 2.5vw, 3.5vh);
+    @include themed {
+      outline: 0.3vw t("text") solid;
+      background-color: t("bg");
+    }
+    transition: background-color 0.5s ease-out, outline 0.5s ease-out;
+    visibility: hidden;
+  }
+  @include landscape {
+    gap: 4vh;
+    margin-right: clamp(10vh, 10vw, 12vh);
+  }
   list-style-type: none;
 }
 
 .navbar_sections > li {
-  font-size: clamp(2.5vh, 2.5vw, 3.5vh);
+  @include portrait {
+    text-transform: uppercase;
+    font-size: clamp(2vh, 3vw, 3.5vh);
+  }
+  @include landscape{
+    font-size: clamp(2.5vh, 2.5vw, 3.5vh);
+  }
   font-family: 'Montserrat', sans-serif;
   @include themed {
     color: t("text");
   }
   transition: color 0.5s ease-out;
+  user-select: none;
   cursor: pointer;
+}
+
+.menusvg {
+  width: clamp(3vh, 4vw, 14vh);
+  height: clamp(3vh, 4vw, 14vh);
+  margin-right: 7.5vw;
+  display: none;
+  @include portrait {
+    display: block;
+  }
+  cursor: pointer;
+}
+
+.menu_svg_stroke {
+  @include themed {
+    stroke: t("text");
+  }
+  transition: stroke 0.5s ease-out;
 }

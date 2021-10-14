@@ -8,23 +8,31 @@ $lightBlue: hsl(205, 36%, 70%);
 
 $blue: hsl(205, 36%, 38%);
 
+$lightThumb: hsl(35, 80%, 86%);
+
+$darkThumb: hsl(34, 5%, 28%);
+
 $text--light: $light;
 $text--dark: $black;
 $bg--light: $light;
 $bg--dark: $black;
 $bg--blue-light: $lightBlue;
 $bg--blue-dark: $blue;
+$thumb-light: $lightThumb;
+$thumb-dark: $darkThumb;
 
 $themes: (
   light: (
     bg: $bg--light,
     text: $text--dark,
     bgBlue: $bg--blue-light,
-  ),
-  dark: (
-    bg: $bg--dark,
-    text: $text--light,
-    bgBlue: $bg--blue-dark,
+    thumb: $thumb-dark,
+    ),
+    dark: (
+      bg: $bg--dark,
+      text: $text--light,
+      bgBlue: $bg--blue-dark,
+      thumb: $thumb-light,
   ),
 );
 

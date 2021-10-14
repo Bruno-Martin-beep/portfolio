@@ -19,6 +19,8 @@ html,
 body {
   overflow: hidden;
   overscroll-behavior: none;
+  width: 100vw;
+  height: 100vh;
 }
 
 .bg {
@@ -56,13 +58,49 @@ body {
 
 .wrapper {
   display: flex;
+  @include portrait {
+    flex-direction: column;
+  }
 }
+
+.mobileDevice {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.mobileDevice_text {
+  width: 60vw;
+  padding: 10vh 10vw 10vh 10vw;
+  @include portrait {
+    font-size: clamp(3vh, 4vw, 5vh);
+  }
+  @include landscape {
+    font-size: clamp(4vh, 4vw, 5vh);
+  }
+  @include themed {
+    background-color: t("bgBlue");
+  }
+  transition: background-color 0.5s ease-out;
+}
+
 
 .section {
   overflow: hidden;
   position: relative;
-  min-width: 100vw;
-  height: 100vh;
+  @include portrait {
+    width: 100vw;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  @include landscape {
+    min-width: 100vw;
+    height: 100vh;
+  }
   display: flex;
   align-items: center;
   z-index: 5;
@@ -73,8 +111,14 @@ h1 {
   margin: 0 0 0 14vw;
   letter-spacing: 0.6vw;
   font-family: "Saol-Display", serif;
-  font-size: clamp(13vh, 13vw, 30vh);
+  @include portrait {
+    font-size: 16vw;
+  }
+  @include landscape {
+    font-size: clamp(13vh, 13vw, 30vh);
+  }
   font-weight: 400;
+  font-display: swap;
   line-height: 100%;
   @include themed {
     color: t("text");
@@ -88,10 +132,13 @@ h2 {
   // text-transform: uppercase;
   font-size: clamp(7vh, 12vw, 14vh);
   font-weight: 400;
+  font-display: swap;
   line-height: 100%;
-  margin: 0 14vh 0 14vh;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+  @include landscape {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin: 0 14vh 0 14vh;
+  }
   text-align: center;
   @include themed {
     color: t("text");
@@ -99,14 +146,19 @@ h2 {
   transition: color 0.5s ease-out;
 }
 
-p {
+p, a {
   font-family: "Montserrat", sans-serif;
   @include themed {
     color: t("text");
   }
   transition: color 0.5s ease-out;
+  text-decoration: none;
 }
 
 .bold {
   font-weight: 600;
+}
+
+.upper {
+  text-transform: uppercase;
 }
