@@ -7,8 +7,8 @@ const Skills = () => {
   
   const mouseOver = (value) => {
     setSvg(value);
-    gsap.to(".skill_icon", {
-      gap: "clamp(9vh, 35vw, 40vh)",
+    gsap.to(".bracket_gap", {
+      marginLeft: "clamp(9vh, 35vw, 40vh)",
       duration: 0.5,
       ease: "power1.out",
       // ease: CustomEase.create(
@@ -34,8 +34,8 @@ const Skills = () => {
   };
 
   const mouseLeave = () => {
-    gsap.to(".skill_icon", {
-      gap: "clamp(10vh, 5vw, 12vh)",
+    gsap.to(".bracket_gap", {
+      marginLeft: "clamp(10vh, 5vw, 12vh)",
       duration: 0.5,
       ease: "power2.out",
     });
@@ -60,6 +60,7 @@ const Skills = () => {
     <section className="section">
       <h2>Skills</h2>
       <div className="skill_cont scrollTo">
+        <div>
         <p className="skill_text">
           const <span className="bold upper">current</span> = [{" "}
           {skillsCurrent.map((elem, id) => {
@@ -77,6 +78,8 @@ const Skills = () => {
           })}{" "}
           ];
         </p>
+        </div>
+        <div>
         <p className="skill_text">
           const <span className="bold upper">upcoming</span> = [{" "}
           {skillsUpcoming.map((elem, id) => {
@@ -94,13 +97,11 @@ const Skills = () => {
           })}{" "}
           ];
         </p>
+        </div>
         <div className="skill_icon">
           <p className="skill_bracket">[</p>
           {svg}
-          {/* {skillsUpcoming.map((elem, id) => {
-            return;
-          })} */}
-          <p className="skill_bracket">]</p>
+          <p className="skill_bracket bracket_gap">]</p>
         </div>
       </div>
     </section>

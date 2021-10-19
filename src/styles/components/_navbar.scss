@@ -13,12 +13,19 @@
 .navbar_themes {
   display: flex;
   @include portrait {
-    gap: 2vw;
     margin-left: 6vw;
   }
   @include landscape {
-    gap: 2vh;
     margin-left: clamp(10vh, 10vw, 12vh);
+  }
+}
+
+.themeButton + .themeButton {
+  @include portrait {
+    margin-left: 2vw;
+  }
+  @include landscape {
+    margin-left: 2vh;
   }
 }
 
@@ -46,9 +53,7 @@
     position: fixed;
     flex-direction: column;
     top: clamp(10vh, 10vw, 14vh);
-    // right: -100%;
     right: 5.5vw;
-    gap: 5vw;
     padding: clamp(2.5vh, 2.5vw, 3.5vh);
     @include themed {
       outline: 0.3vw t("text") solid;
@@ -58,13 +63,12 @@
     visibility: hidden;
   }
   @include landscape {
-    gap: 4vh;
     margin-right: clamp(10vh, 10vw, 12vh);
   }
   list-style-type: none;
 }
 
-.navbar_sections > li {
+.navbar_sections li {
   @include portrait {
     text-transform: uppercase;
     font-size: clamp(2vh, 3vw, 3.5vh);
@@ -79,6 +83,15 @@
   transition: color 0.5s ease-out;
   user-select: none;
   cursor: pointer;
+}
+
+.navbar_sections li + li {
+  @include portrait {
+    margin-top: 5vw;
+  }
+  @include landscape {
+    margin-left: 4vh;
+  }
 }
 
 .menusvg {

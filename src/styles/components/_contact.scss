@@ -10,12 +10,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  @include portrait {
-    gap: 8vw;
-  }
-  @include landscape {
-    gap: clamp(3vh, 3vw, 4vh);
-  }
 }
 
 .cont_text {
@@ -24,6 +18,15 @@
   }
   @include landscape {
     font-size: clamp(4vh, 4vw, 8vh);
+  }
+}
+
+.cont_text + .cont_text {
+  @include portrait {
+    margin-top: 8vw;
+  }
+  @include landscape {
+    margin-top: clamp(3vh, 3vw, 4vh);
   }
 }
 

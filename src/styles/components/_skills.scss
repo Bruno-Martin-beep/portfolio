@@ -3,7 +3,6 @@
     width: 80vw;
     height: 100vh;
     justify-content: center;
-    gap: 15vh;
   }
   @include landscape {
     width: 75vw;
@@ -13,6 +12,12 @@
   }
   display: flex;
   flex-direction: column;
+}
+
+.skill_cont div + div {
+  @include portrait {
+    margin-top: 15vh;
+  }
 }
 
 .skill_text {
@@ -27,8 +32,11 @@
 .skill_icon {
   display: flex;
   justify-content: center;
-  gap: clamp(10vh, 5vw, 12vh);
   transform: rotate(-4deg);
+}
+
+.bracket_gap {
+  margin-left: clamp(10vh, 5vw, 12vh);
 }
 
 .skill_svg {

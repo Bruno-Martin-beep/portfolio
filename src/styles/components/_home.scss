@@ -8,13 +8,13 @@
   z-index: 5;
 }
 
-.firtN::before {
+.home h1:nth-child(1)::before {
   content: "<";
   position: absolute;
   transform: translateX(-100%);
 }
 
-.sectN::after {
+.home h1:nth-child(2)::after {
   content: "/>";
 }
 

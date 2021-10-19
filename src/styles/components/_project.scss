@@ -20,7 +20,6 @@
     margin-left: 2vw;
     grid-row: 4 / 9;
     grid-column: 1 / 6;
-    gap: 3vh;
     align-self: center;
     justify-content: end;
   }
@@ -33,6 +32,12 @@
   display: flex;
   flex-direction: column;
   z-index: 5;
+}
+
+.proj_info div + div {
+  @include portrait {
+    margin-top: 3vh;
+  }
 }
 
 .Proj_ftilte {
@@ -72,15 +77,22 @@
 .proj_link {
   display: flex;
   @include portrait {
-    gap: 3vw;
     font-size: 3.4vw;
   }
   @include landscape {
-    gap: clamp(2vh, 2vw, 3vh);
     font-size: clamp(3vh, 3.5vw, 3.5vh);
   }
   text-transform: uppercase;
   font-weight: 600;
+}
+
+.proj_link + .proj_link {
+  @include portrait {
+    margin-left: 3vw;
+  }
+  @include landscape {
+    margin-left: clamp(2vh, 2vw, 3vh);
+  }
 }
 
 .proj_img {

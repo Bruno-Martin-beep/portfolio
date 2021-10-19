@@ -102,7 +102,7 @@ const Navbar = ({ scrollbar }) => {
   return (
     <div className="navbar">
       <ThemeSetter />
-      <ul className={`navbar_sections`}>
+      <ul className="navbar_sections">
         <li onClick={() => handleSelect(0)}>Home</li>
         <li onClick={() => handleSelect(1)}>About Me</li>
         <li onClick={() => handleSelect(2)}>Projects</li>

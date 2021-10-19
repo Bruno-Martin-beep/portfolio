@@ -10,15 +10,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10vh;
   padding: 0 10vw 0 10vw;
+}
+
+.about_cont2 + .about_cont2 {
+  margin-top: 10vh;
 }
 
 .about_cont2 {
   display: flex;
   @include portrait {
     justify-content: center;
-    // gap: 10vw;
   }
   @include landscape {
     justify-content: space-between;
@@ -55,7 +57,7 @@
 
 .svg_color {
   @include themed {
-    fill: t("text")
+    fill: t("text");
   }
   transition: fill 0.5s ease-out;
 }

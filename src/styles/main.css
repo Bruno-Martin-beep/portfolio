@@ -288,15 +288,25 @@ p, a {
 
 @media (orientation: portrait) {
   .navbar_themes {
-    gap: 2vw;
     margin-left: 6vw;
   }
 }
 
 @media (orientation: landscape) {
   .navbar_themes {
-    gap: 2vh;
     margin-left: clamp(10vh, 10vw, 12vh);
+  }
+}
+
+@media (orientation: portrait) {
+  .themeButton + .themeButton {
+    margin-left: 2vw;
+  }
+}
+
+@media (orientation: landscape) {
+  .themeButton + .themeButton {
+    margin-left: 2vh;
   }
 }
 
@@ -340,7 +350,6 @@ p, a {
             flex-direction: column;
     top: clamp(10vh, 10vw, 14vh);
     right: 5.5vw;
-    gap: 5vw;
     padding: clamp(2.5vh, 2.5vw, 3.5vh);
     -webkit-transition: background-color 0.5s ease-out, outline 0.5s ease-out;
     transition: background-color 0.5s ease-out, outline 0.5s ease-out;
@@ -358,12 +367,11 @@ p, a {
 
 @media (orientation: landscape) {
   .navbar_sections {
-    gap: 4vh;
     margin-right: clamp(10vh, 10vw, 12vh);
   }
 }
 
-.navbar_sections > li {
+.navbar_sections li {
   font-family: 'Montserrat', sans-serif;
   -webkit-transition: color 0.5s ease-out;
   transition: color 0.5s ease-out;
@@ -375,24 +383,36 @@ p, a {
 }
 
 @media (orientation: portrait) {
-  .navbar_sections > li {
+  .navbar_sections li {
     text-transform: uppercase;
     font-size: clamp(2vh, 3vw, 3.5vh);
   }
 }
 
 @media (orientation: landscape) {
-  .navbar_sections > li {
+  .navbar_sections li {
     font-size: clamp(2.5vh, 2.5vw, 3.5vh);
   }
 }
 
-.theme--light .navbar_sections > li {
+.theme--light .navbar_sections li {
   color: #141414;
 }
 
-.theme--dark .navbar_sections > li {
+.theme--dark .navbar_sections li {
   color: #fbedda;
+}
+
+@media (orientation: portrait) {
+  .navbar_sections li + li {
+    margin-top: 5vw;
+  }
+}
+
+@media (orientation: landscape) {
+  .navbar_sections li + li {
+    margin-left: 4vh;
+  }
 }
 
 .menusvg {
@@ -481,14 +501,14 @@ p, a {
   z-index: 5;
 }
 
-.firtN::before {
+.home h1:nth-child(1)::before {
   content: "<";
   position: absolute;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
 }
 
-.sectN::after {
+.home h1:nth-child(2)::after {
   content: "/>";
 }
 
@@ -522,7 +542,6 @@ p, a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 10vh;
   padding: 0 10vw 0 10vw;
 }
 
@@ -538,6 +557,10 @@ p, a {
     width: 130vw;
     height: 100vh;
   }
+}
+
+.about_cont2 + .about_cont2 {
+  margin-top: 10vh;
 }
 
 .about_cont2 {
@@ -661,7 +684,6 @@ p, a {
     -ms-grid-column: 1;
     -ms-grid-column-span: 5;
     grid-column: 1 / 6;
-    gap: 3vh;
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
@@ -683,6 +705,12 @@ p, a {
     -ms-grid-column: 1;
     -ms-grid-column-span: 5;
     grid-column: 1 / 6;
+  }
+}
+
+@media (orientation: portrait) {
+  .proj_info div + div {
+    margin-top: 3vh;
   }
 }
 
@@ -748,15 +776,25 @@ p, a {
 
 @media (orientation: portrait) {
   .proj_link {
-    gap: 3vw;
     font-size: 3.4vw;
   }
 }
 
 @media (orientation: landscape) {
   .proj_link {
-    gap: clamp(2vh, 2vw, 3vh);
     font-size: clamp(3vh, 3.5vw, 3.5vh);
+  }
+}
+
+@media (orientation: portrait) {
+  .proj_link + .proj_link {
+    margin-left: 3vw;
+  }
+}
+
+@media (orientation: landscape) {
+  .proj_link + .proj_link {
+    margin-left: clamp(2vh, 2vw, 3vh);
   }
 }
 
@@ -830,7 +868,6 @@ p, a {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    gap: 15vh;
   }
 }
 
@@ -841,6 +878,12 @@ p, a {
     padding: 0 12.5vw 0 12.5vw;
     -ms-flex-pack: distribute;
         justify-content: space-around;
+  }
+}
+
+@media (orientation: portrait) {
+  .skill_cont div + div {
+    margin-top: 15vh;
   }
 }
 
@@ -863,9 +906,12 @@ p, a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: clamp(10vh, 5vw, 12vh);
   -webkit-transform: rotate(-4deg);
           transform: rotate(-4deg);
+}
+
+.bracket_gap {
+  margin-left: clamp(10vh, 5vw, 12vh);
 }
 
 .skill_svg {
@@ -938,18 +984,6 @@ p, a {
 }
 
 @media (orientation: portrait) {
-  .cont_info {
-    gap: 8vw;
-  }
-}
-
-@media (orientation: landscape) {
-  .cont_info {
-    gap: clamp(3vh, 3vw, 4vh);
-  }
-}
-
-@media (orientation: portrait) {
   .cont_text {
     font-size: 3.6vw;
   }
@@ -958,6 +992,18 @@ p, a {
 @media (orientation: landscape) {
   .cont_text {
     font-size: clamp(4vh, 4vw, 8vh);
+  }
+}
+
+@media (orientation: portrait) {
+  .cont_text + .cont_text {
+    margin-top: 8vw;
+  }
+}
+
+@media (orientation: landscape) {
+  .cont_text + .cont_text {
+    margin-top: clamp(3vh, 3vw, 4vh);
   }
 }
 
