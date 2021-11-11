@@ -170,6 +170,7 @@ function App() {
   };
 
   useEffect(() => {
+    console.log("%cLet's create together 😄", "font-size: 40px; font-weight: bold");
     gsap.registerPlugin(ScrollTrigger);
 
     ScrollTrigger.matchMedia({
