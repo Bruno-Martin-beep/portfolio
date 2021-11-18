@@ -34,6 +34,37 @@
   background-color: #fbedda;
 }
 
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline-style: solid;
+  border-radius: 50vw;
+}
+
+.theme--light *:focus-visible {
+  outline-color: #141414;
+}
+
+.theme--dark *:focus-visible {
+  outline-color: #fbedda;
+}
+
+@media (orientation: portrait) {
+  *:focus-visible {
+    outline-width: 0.5vw;
+    outline-offset: 1.5vw;
+  }
+}
+
+@media (orientation: landscape) {
+  *:focus-visible {
+    outline-width: 0.5vh;
+    outline-offset: 1.5vh;
+  }
+}
+
 html,
 body {
   overflow: hidden;
@@ -299,31 +330,61 @@ p, a {
 }
 
 @media (orientation: portrait) {
-  .themeButton + .themeButton {
+  .navbar_themes > * + * {
     margin-left: 2vw;
   }
 }
 
 @media (orientation: landscape) {
-  .themeButton + .themeButton {
+  .navbar_themes > * + * {
     margin-left: 2vh;
   }
 }
 
 .themeButton {
-  width: clamp(2vh, 2vw, 3vh);
-  height: clamp(2vh, 2vw, 3vh);
   border-radius: 50%;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  border-style: solid;
   -webkit-transition: border 0.5s ease-out;
   transition: border 0.5s ease-out;
+  cursor: pointer;
 }
 
 .theme--light .themeButton {
-  border: 3px solid #141414;
+  border-color: #141414;
 }
 
 .theme--dark .themeButton {
-  border: 3px solid #fbedda;
+  border-color: #fbedda;
+}
+
+@media (orientation: portrait) {
+  .themeButton {
+    width: clamp(2vh, 3.5vw, 3vh);
+    height: clamp(2vh, 3.5vw, 3vh);
+    border-width: 0.5vw;
+  }
+}
+
+@media (orientation: landscape) {
+  .themeButton {
+    width: clamp(2vh, 2vw, 3vh);
+    height: clamp(2vh, 2vw, 3vh);
+    border-width: 0.5vh;
+  }
+}
+
+@media (orientation: portrait) {
+  .themeButton:focus-visible {
+    outline-offset: 0.5vw;
+  }
+}
+
+@media (orientation: landscape) {
+  .themeButton:focus-visible {
+    outline-offset: 0.5vh;
+  }
 }
 
 .lightT {
@@ -351,16 +412,16 @@ p, a {
     top: clamp(10vh, 10vw, 14vh);
     right: 5.5vw;
     padding: clamp(2.5vh, 2.5vw, 3.5vh);
-    -webkit-transition: background-color 0.5s ease-out, outline 0.5s ease-out;
-    transition: background-color 0.5s ease-out, outline 0.5s ease-out;
+    -webkit-transition: background-color 0.5s ease-out, border 0.5s ease-out;
+    transition: background-color 0.5s ease-out, border 0.5s ease-out;
     visibility: hidden;
   }
   .theme--light .navbar_sections {
-    outline: 0.3vw #141414 solid;
+    border: 0.5vw #141414 solid;
     background-color: #fbedda;
   }
   .theme--dark .navbar_sections {
-    outline: 0.3vw #fbedda solid;
+    border: 0.5vw #fbedda solid;
     background-color: #141414;
   }
 }
@@ -371,7 +432,9 @@ p, a {
   }
 }
 
-.navbar_sections li {
+.navbar_sections button {
+  background-color: transparent;
+  text-align: start;
   font-family: 'Montserrat', sans-serif;
   -webkit-transition: color 0.5s ease-out;
   transition: color 0.5s ease-out;
@@ -383,41 +446,41 @@ p, a {
 }
 
 @media (orientation: portrait) {
-  .navbar_sections li {
+  .navbar_sections button {
     text-transform: uppercase;
     font-size: clamp(2vh, 3vw, 3.5vh);
   }
 }
 
 @media (orientation: landscape) {
-  .navbar_sections li {
+  .navbar_sections button {
     font-size: clamp(2.5vh, 2.5vw, 3.5vh);
   }
 }
 
-.theme--light .navbar_sections li {
+.theme--light .navbar_sections button {
   color: #141414;
 }
 
-.theme--dark .navbar_sections li {
+.theme--dark .navbar_sections button {
   color: #fbedda;
 }
 
 @media (orientation: portrait) {
-  .navbar_sections li + li {
+  .navbar_sections > * + * {
     margin-top: 5vw;
   }
 }
 
 @media (orientation: landscape) {
-  .navbar_sections li + li {
+  .navbar_sections > * + * {
     margin-left: 4vh;
   }
 }
 
 .menusvg {
-  width: clamp(3vh, 4vw, 14vh);
-  height: clamp(3vh, 4vw, 14vh);
+  width: clamp(3vh, 5vw, 14vh);
+  height: clamp(3vh, 5vw, 14vh);
   margin-right: 7.5vw;
   display: none;
   cursor: pointer;

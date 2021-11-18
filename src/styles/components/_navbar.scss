@@ -20,7 +20,7 @@
   }
 }
 
-.themeButton + .themeButton {
+.navbar_themes > * + * {
   @include portrait {
     margin-left: 2vw;
   }
@@ -30,14 +30,35 @@
 }
 
 .themeButton {
-  width: clamp(2vh, 2vw, 3vh);
-  height: clamp(2vh, 2vw, 3vh);
   border-radius: 50%;
+  box-sizing: content-box;
   @include themed {
-    border: 3px solid t("text");
+    border-color: t("text");
+  }
+  @include portrait {
+    width: clamp(2vh, 3.5vw, 3vh);
+    height: clamp(2vh, 3.5vw, 3vh);
+    border-width: 0.5vw;
+  }
+  border-style: solid;
+  @include landscape {
+    width: clamp(2vh, 2vw, 3vh);
+    height: clamp(2vh, 2vw, 3vh);
+    border-width: 0.5vh;
   }
   transition: border 0.5s ease-out;
+  cursor: pointer;
+
+  &:focus-visible {
+    @include portrait {
+      outline-offset: 0.5vw;
+    }
+    @include landscape {
+      outline-offset: 0.5vh;
+    }
+  }
 }
+
 
 .lightT {
   background-color: $light;
@@ -55,11 +76,12 @@
     top: clamp(10vh, 10vw, 14vh);
     right: 5.5vw;
     padding: clamp(2.5vh, 2.5vw, 3.5vh);
+    // border-radius: 4vw;
     @include themed {
-      outline: 0.3vw t("text") solid;
+      border: 0.5vw t("text") solid;
       background-color: t("bg");
     }
-    transition: background-color 0.5s ease-out, outline 0.5s ease-out;
+    transition: background-color 0.5s ease-out, border 0.5s ease-out;
     visibility: hidden;
   }
   @include landscape {
@@ -68,7 +90,9 @@
   list-style-type: none;
 }
 
-.navbar_sections li {
+.navbar_sections button {
+  background-color: transparent;
+  text-align: start;
   @include portrait {
     text-transform: uppercase;
     font-size: clamp(2vh, 3vw, 3.5vh);
@@ -85,7 +109,7 @@
   cursor: pointer;
 }
 
-.navbar_sections li + li {
+.navbar_sections > * + * {
   @include portrait {
     margin-top: 5vw;
   }
@@ -95,8 +119,8 @@
 }
 
 .menusvg {
-  width: clamp(3vh, 4vw, 14vh);
-  height: clamp(3vh, 4vw, 14vh);
+  width: clamp(3vh, 5vw, 14vh);
+  height: clamp(3vh, 5vw, 14vh);
   margin-right: 7.5vw;
   display: none;
   @include portrait {

@@ -6,8 +6,8 @@ export const ThemeSetter = () => {
 
   return (
     <div className="navbar_themes">
-      <div className="themeButton lightT" onClick={() => setTheme("light")}></div>
-      <div className="themeButton darkT" onClick={() => setTheme("dark")}></div>
+      <button className="themeButton lightT" aria-label="light theme" onClick={() => setTheme("light")}></button>
+      <button className="themeButton darkT" aria-label="dark theme" onClick={() => setTheme("dark")}></button>
     </div>
   );
 };

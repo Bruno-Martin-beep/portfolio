@@ -13,6 +13,27 @@
       background-color: t("text");
     }
   }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    @include themed {
+      outline-color: t("text");
+    }
+    outline-style: solid;
+
+    @include portrait {
+      outline-width: 0.5vw;
+      outline-offset: 1.5vw;
+    }
+    @include landscape {
+      outline-width: 0.5vh;
+      outline-offset: 1.5vh;
+    }
+    border-radius: 50vw;
+  }
 }
 
 html,

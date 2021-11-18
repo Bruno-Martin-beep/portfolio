@@ -1,5 +1,5 @@
 import React from "react";
-import shinji from "../assets/shinji.png";
+import shinji from "../assets/shinji.avif";
 
 
 const Projects = () => {

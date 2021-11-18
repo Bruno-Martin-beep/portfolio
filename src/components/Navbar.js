@@ -102,18 +102,13 @@ const Navbar = ({ scrollbar }) => {
   return (
     <div className="navbar">
       <ThemeSetter />
-      <ul className="navbar_sections">
-        <li onClick={() => handleSelect(0)}>Home</li>
-        <li onClick={() => handleSelect(1)}>About Me</li>
-        <li onClick={() => handleSelect(2)}>Projects</li>
-        <li onClick={() => handleSelect(3)}>Skills</li>
-        <li onClick={() => handleSelect(4)}>Contact</li>
-      </ul>
       <svg
+        tabindex="0"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 240 240"
         className="menusvg"
         onClick={menuSVG ? menuSvgDisabled : menuSvgActive}
+        onKeyPress={menuSVG ? menuSvgDisabled : menuSvgActive}
       >
         <path
           className="menu_svg_path menu_svg_stroke"
@@ -121,6 +116,13 @@ const Navbar = ({ scrollbar }) => {
           d="M0,71L240,71 M0,90L240,90 M0,149L240,149 M0,168L240,168"
         />
       </svg>
+      <div className="navbar_sections">
+        <button onClick={() => handleSelect(0)}>Home</button>
+        <button onClick={() => handleSelect(1)}>About Me</button>
+        <button onClick={() => handleSelect(2)}>Projects</button>
+        <button onClick={() => handleSelect(3)}>Skills</button>
+        <button onClick={() => handleSelect(4)}>Contact</button>
+      </div>
     </div>
   );
 };
