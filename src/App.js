@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./styles/main.css";
+import "./styles/main.scss";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -199,10 +199,8 @@ function App() {
           </div>
         )}
         <Navbar scrollbar={scrollbar} />
-        <div className="bg">
-          
-        </div>
-        <div className="bgProj"></div>
+        <div className="bg" />
+        <div className="bgProj" />
         <div id="my-scrollbar" className="scroller">
           <div className="wrapper">
             <Home />

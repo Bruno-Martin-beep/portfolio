@@ -103,7 +103,7 @@ const Navbar = ({ scrollbar }) => {
     <div className="navbar">
       <ThemeSetter />
       <svg
-        tabindex="0"
+        tabIndex="0"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 240 240"
         className="menusvg"
