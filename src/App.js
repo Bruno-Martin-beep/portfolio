@@ -8,7 +8,7 @@ import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 
 import ThemeProvider from "./components/Contexts/ThemeProvider";
 import useDeviceDetect from "./components/useDeviceDetect";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Home from "./components/Home";
 import AboutMe from "./components/AboutMe";
 import Projects from "./components/Projects";
