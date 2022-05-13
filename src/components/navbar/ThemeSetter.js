@@ -1,13 +1,20 @@
-import React, { useContext } from "react";
-import ThemeContext from "../Contexts/ThemeContext";
+import React from 'react'
 
-export const ThemeSetter = () => {
-  const { setTheme } = useContext(ThemeContext);
-
+const ThemeSetter = ({ handleTheme }) => {
   return (
     <div className="navbar_themes">
-      <button className="themeButton lightT" aria-label="light theme" onClick={() => setTheme("light")}></button>
-      <button className="themeButton darkT" aria-label="dark theme" onClick={() => setTheme("dark")}></button>
+      <button
+        className="themeButton lightT"
+        aria-label="light theme"
+        onClick={() => handleTheme("light")}
+      />
+      <button
+        className="themeButton darkT"
+        aria-label="dark theme"
+        onClick={() => handleTheme("dark")}
+      />
     </div>
-  );
-};
+  )
+}
+
+export default ThemeSetter

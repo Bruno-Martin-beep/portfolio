@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { ThemeSetter } from "./ThemeSetter";
+import ThemeSetter from "./ThemeSetter";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-const Navbar = ({ scrollbar }) => {
+const Navbar = ({ scrollbar, handleTheme }) => {
   const [sections, setSections] = useState(null);
   const [menuSVG, setMenuSVG] = useState(false);
   gsap.registerPlugin(ScrollTrigger)
@@ -101,7 +101,7 @@ const Navbar = ({ scrollbar }) => {
 
   return (
     <div className="navbar">
-      <ThemeSetter />
+      <ThemeSetter handleTheme={handleTheme} />
       <svg
         tabIndex="0"
         xmlns="http://www.w3.org/2000/svg"
