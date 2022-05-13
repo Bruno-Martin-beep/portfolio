@@ -1,5 +1,5 @@
 import React from "react";
-import shinji from "../assets/shinji.webp";
+import shinji from "../../assets/shinji.webp";
 
 
 const Projects = () => {

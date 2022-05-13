@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { skillsCurrent, skillsUpcoming } from "./skillItems";
+import { skillsCurrent, skillsUpcoming } from "../../mocks/skillItems";
 import gsap from "gsap";
 
 const Skills = () => {
