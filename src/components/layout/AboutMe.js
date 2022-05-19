@@ -7,8 +7,10 @@ const AboutMe = () => {
       <div className="about_cont scrollTo">
         <div className="about_cont2">
           <p className="about_text">
-            Hi, I’m a beginner <span className="upper">front-end developer</span> {"&"} <span className="upper">ui designer</span> based in
-            Córdoba, Argentina, native Spanish and beginner(A2) English speaker.
+            Hi, I’m a beginner{" "}
+            <span className="upper">front-end developer</span> {"&"}{" "}
+            <span className="upper">ui designer</span> based in Córdoba,
+            Argentina, native Spanish and beginner(A2) English speaker.
           </p>
           <svg
             width="130"
@@ -39,8 +41,8 @@ const AboutMe = () => {
             />
           </svg>
           <p className="about_text">
-            Fascinated in learning WebGL with Three.js and animation with Gsap,
-            always ready to learn new technologies, tools and knowledges.
+            Fascinated in learning Three.js and motion design, always ready to
+            learn new technologies, tools and knowledge.
           </p>
         </div>
       </div>
