@@ -88,8 +88,8 @@ const Scroller = ({ setScrollbar, children }) => {
         scroller: ".scroller",
         horizontal: horizontal,
         toggleActions: "play reverse play reverse",
-        start: "top-=30% top",
-        end: "end+=70% top",
+        start: "top-=0% top",
+        end: "end+=175% top",
       });
 
       ///asteriskRotation

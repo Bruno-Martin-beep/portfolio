@@ -1,33 +1,45 @@
 import React from "react";
-import shinji from "../../assets/shinji.webp";
-
+import projectsList from "../../mocks/projectsList";
 
 const Projects = () => {
   return (
     <section className="section">
       <h2>Projects</h2>
-      <div id="proj" className="proj_cont scrollTo">
-        <div className="proj_info">
-          <div>
-            <p className="Proj_ftilte">EVANGELION</p>
-            <p className="proj_stitle">MEMORY GAME</p>
+      <div className="projects_cont scrollTo">
+        {projectsList.map((project, index) => (
+          <div key={index} className={`proj_cont ${project.className}`}>
+            <div className="proj_img_cont">
+              <img className="proj_img" src={project.image} alt="" />
+              <a
+                className="proj_repo"
+                target="_blank"
+                rel="noreferrer"
+                href={project.linkRepo}
+              >
+                <svg
+                  viewBox="0 0 68 68"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="68" height="68" fill="white" />
+                  <path
+                    d="M27.65 43.85L17.3 33.5L27.65 23.15L24.5 20L11 33.5L24.5 47L27.65 43.85ZM39.35 43.85L49.7 33.5L39.35 23.15L42.5 20L56 33.5L42.5 47L39.35 43.85V43.85Z"
+                    fill="black"
+                  />
+                </svg>
+              </a>
+            </div>
+            <a
+              className="proj_title"
+              target="_blank"
+              rel="noreferrer"
+              href={project.linkLive}
+            >
+              <span className="proj_title_link">{project.title}</span> →
+            </a>
+            <p className="proj_desc">{project.description}</p>
           </div>
-          <div>
-          <p className="proj_text">
-            A mini-game of making pairs, where you can raise your score,
-            developed with <span className="bold">React</span>,{" "}
-            <span className="bold">Firebase</span> and{" "}
-            <span className="bold">Gsap</span>.
-          </p>
-          </div>
-          <div className="proj_link">
-            <a className="proj_link" target="_blank" rel="noreferrer" href="https://bruno-martin-beep.github.io/memory-game/">view live ›</a>
-            <a className="proj_link" target="_blank" rel="noreferrer" href="https://github.com/Bruno-Martin-beep/memory-game">view repo ›</a>
-          </div>
-        </div>
-        <div className="proj_img">
-          <img className="proj_img_size" src={shinji} alt="shinji" />
-        </div>
+        ))}
       </div>
     </section>
   );
