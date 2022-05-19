@@ -2,10 +2,9 @@
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   font-weight: 400;
+  -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
 
   &::selection {
     @include themed {
@@ -42,6 +41,13 @@ body {
   overscroll-behavior: none;
   width: 100vw;
   height: 100vh;
+}
+
+html {
+  font-size: min(1.5vw, 1.8vh);
+  @include portrait {
+    // font-size: 1vw;
+  }
 }
 
 .bg {
@@ -173,7 +179,10 @@ p, a {
     color: t("text");
   }
   transition: color 0.5s ease-out;
-  text-decoration: none;
+}
+
+a {
+  text-underline-position: under;
 }
 
 .bold {
