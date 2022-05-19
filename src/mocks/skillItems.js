@@ -141,92 +141,6 @@ export const skillsCurrent = [
     ),
   },
   {
-    name: "Gsap",
-    svg: (
-      <svg
-        data-name="Layer 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 335.58 513"
-        className="skill_svg"
-      >
-        <title>socks</title>
-        <path
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          d="M316.34,329.09A93.22,93.22,0,0,0,346,397.42c-22.55,15.9-50.17,39-115.08,92.6A81.91,81.91,0,0,1,222,496.3c9-63.25-37.57-125.95-105.21-132.87a8.18,8.18,0,0,1,.76-.83l101.37-97V20.05A17.53,17.53,0,0,1,236.49,2.5H372.75A17.53,17.53,0,0,1,390.3,20V157.19c0,26.18,2.12,53.33,9.32,78.69A93.86,93.86,0,0,0,316.34,329.09Z"
-          transform="translate(-88.21 0.5)"
-        />
-        <path
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          d="M379.46,376.23A380.1,380.1,0,0,0,346,397.42a93.73,93.73,0,0,1,53.69-161.51,167.36,167.36,0,0,0,9.58,26C421,287.17,437.58,342.49,379.46,376.23Zm-157.4,120.1c-32.42,20.76-77,17.08-105.89-11.77a85.24,85.24,0,0,1,.63-121.16C184.45,370.38,231.1,433,222.06,496.33Z"
-          transform="translate(-88.21 0.5)"
-        />
-        <path
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          d="M202.8,140.43"
-          transform="translate(-88.21 0.5)"
-        />
-        <path
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          d="M231.36,169"
-          transform="translate(-88.21 0.5)"
-        />
-        <polygon
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          points="187.71 87.93 159.09 126.49 130.53 87.93 159.09 49.37 187.71 87.93"
-        />
-        <polygon
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          points="244.88 87.93 216.26 126.49 187.71 87.93 216.26 49.37 244.88 87.93"
-        />
-        <polygon
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          points="302.05 87.93 273.44 126.49 244.88 87.93 273.44 49.37 302.05 87.93"
-        />
-        <polygon
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          points="159.15 126.49 130.53 165.05 130.56 126.49 130.53 87.93 159.15 126.49"
-        />
-        <polygon
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          points="216.29 126.49 187.68 165.05 159.12 126.49 187.68 87.93 216.29 126.49"
-        />
-        <polygon
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          points="273.46 126.49 244.85 165.05 216.29 126.49 244.85 87.93 273.46 126.49"
-        />
-        <polygon
-          fill="none"
-          className="skill_svg_stroke"
-          strokeWidth="8"
-          points="302.05 126.49 302.02 165.05 273.46 126.49 302.02 87.93 302.05 126.49"
-        />
-      </svg>
-    ),
-  },
-];
-
-export const skillsUpcoming = [
-  {
     name: "Redux",
     svg: (
       <svg
@@ -242,6 +156,10 @@ export const skillsUpcoming = [
       </svg>
     ),
   },
+];
+
+export const skillsUpcoming = [
+  
   {
     name: "Blender",
     svg: (
