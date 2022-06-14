@@ -12,7 +12,7 @@ const projectsList = [
     className: "",
   },
   {
-    title: "Memori game",
+    title: "Memory game",
     description: "A mini-game of making pairs, where you can raise your score.",
     image: shinji,
     linkLive: "https://bruno-martin-beep.github.io/memory-game/",
