@@ -1,7 +1,17 @@
 import superShoe from "../assets/super shoe.webp";
 import shinji from "../assets/shinji.webp";
+import upcoming from "../assets/upcoming.webp";
 
 const projectsList = [
+  {
+    title: "upcoming",
+    description:
+      "E-commerce of 3D models developed with Next.js and PostgreSQL.",
+    image: upcoming,
+    linkLive: null,
+    linkRepo: null,
+    className: "",
+  },
   {
     title: "Zapaz",
     description:
@@ -17,7 +27,7 @@ const projectsList = [
     image: shinji,
     linkLive: "https://bruno-martin-beep.github.io/memory-game/",
     linkRepo: "https://github.com/Bruno-Martin-beep/memory-game",
-    className: "proj_cont",
+    className: "proj_bg_blue",
   },
 ];
 

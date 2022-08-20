@@ -2,13 +2,15 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  gap: 15vw;
   min-width: 100vw;
-  width: 150vw;
   min-height: 100vh;
+  padding: 0 15vw;
   @include portrait {
     flex-direction: column;
     width: 100vw;
     min-height: 150rem;
+    padding: 15vh 0;
   }
 }
 
@@ -42,7 +44,7 @@
   transition: transform 500ms ease-in-out;
 }
 
-.proj_img:hover{
+.proj_img:hover {
   transform: scale(1.1);
 }
 
@@ -69,7 +71,6 @@
   position: relative;
   width: fit-content;
   font-size: 2.5rem;
-  font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
   @include portrait {
@@ -78,7 +79,7 @@
 }
 
 .proj_title_link {
-  text-decoration: underline ;
+  text-decoration: underline;
 }
 
 .proj_desc {

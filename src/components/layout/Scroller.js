@@ -84,12 +84,12 @@ const Scroller = ({ setScrollbar, children }) => {
 
       ScrollTrigger.create({
         animation: backColor,
-        trigger: ".proj_cont",
+        trigger: ".proj_bg_blue",
         scroller: ".scroller",
         horizontal: horizontal,
         toggleActions: "play reverse play reverse",
-        start: "top-=0% top",
-        end: "end+=175% top",
+        start: "top-=100% top",
+        end: "end+=50% top",
       });
 
       ///asteriskRotation
