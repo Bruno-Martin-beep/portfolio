@@ -66,11 +66,19 @@ html {
   height: 100vh;
   position: absolute;
   z-index: 3;
+  transition: background-color 0.5s ease-out;
+  opacity: 0;
+}
+
+.bgProj_blue {
   @include themed {
     background-color: t("bgBlue");
   }
-  transition: background-color 0.5s ease-out;
-  opacity: 0;
+}
+.bgProj_green {
+  @include themed {
+    background-color: t("bgGreen");
+  }
 }
 
 #my-scrollbar {
@@ -114,7 +122,6 @@ html {
   }
   transition: background-color 0.5s ease-out;
 }
-
 
 .section {
   overflow: hidden;
@@ -173,7 +180,8 @@ h2 {
   transition: color 0.5s ease-out;
 }
 
-p, a {
+p,
+a {
   font-family: "Montserrat", sans-serif;
   @include themed {
     color: t("text");

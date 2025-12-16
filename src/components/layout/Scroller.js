@@ -76,15 +76,25 @@ const Scroller = ({ setScrollbar, children }) => {
 
       ///backColor
 
-      const backColor = gsap.fromTo(
-        ".bgProj",
-        { opacity: 0 },
+      const bgAnim = (color) => gsap.fromTo(
+        `.bgProj_` + color,
+        { opacity: 0  },
         { opacity: 1, duration: 0.6 }
-      );
+      )
 
       ScrollTrigger.create({
-        animation: backColor,
+        animation: bgAnim("blue"),
         trigger: ".proj_bg_blue",
+        scroller: ".scroller",
+        horizontal: horizontal,
+        toggleActions: "play reverse play reverse",
+        start: "top-=100% top",
+        end: "end+=50% top",
+      });
+
+      ScrollTrigger.create({
+        animation:  bgAnim("green"),
+        trigger: ".proj_bg_green",
         scroller: ".scroller",
         horizontal: horizontal,
         toggleActions: "play reverse play reverse",

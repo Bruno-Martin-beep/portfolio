@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/main.scss";
 
 import useTheme from "./hooks/useTheme";
@@ -27,7 +27,8 @@ function App() {
       <MobileWarning />
       <Navbar scrollbar={scrollbar} handleTheme={handleTheme} />
       <div className="bg" />
-      <div className="bgProj" />
+      <div className="bgProj bgProj_blue" />
+      <div className="bgProj bgProj_green" />
       <Scroller setScrollbar={setScrollbar}>
         <Home />
         <AboutMe />

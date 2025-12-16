@@ -1,16 +1,16 @@
 import superShoe from "../assets/super shoe.webp";
 import shinji from "../assets/shinji.webp";
-import upcoming from "../assets/upcoming.webp";
+import solar from "../assets/solar.webp";
 
 const projectsList = [
   {
-    title: "upcoming",
+    title: "Solar",
     description:
-      "E-commerce of 3D models developed with Next.js and PostgreSQL.",
-    image: upcoming,
-    linkLive: null,
+      "A roof selector where you can draw structures and connect them dynamically.",
+    image: solar,
+    linkLive: "https://bruno-martin-solar.vercel.app/",
     linkRepo: null,
-    className: "",
+    className: "proj_bg_green",
   },
   {
     title: "Zapaz",
