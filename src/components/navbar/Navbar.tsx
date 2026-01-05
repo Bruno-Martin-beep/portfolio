@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
-import ThemeSetter from "./ThemeSetter";
+import { useEffect, useState } from "react";
+import ThemeSetter from "./ThemeSetter.tsx";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import type { Scrollbar } from "smooth-scrollbar/scrollbar";
 
-const Navbar = ({ scrollbar, handleTheme }) => {
-  const [sections, setSections] = useState(null);
+const Navbar = ({ scrollbar }: { scrollbar: Scrollbar | null }) => {
+  const [sections, setSections] = useState<
+    Array<{ top: number; left: number }>
+  >([]);
   const [menuSVG, setMenuSVG] = useState(false);
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     const GetPositions = () => {
       const getSections = document.querySelectorAll(".scrollTo");
-      let positions = [];
+      const positions: Array<{ top: number; left: number }> = [];
       getSections.forEach((elem) =>
         positions.push({
           top: elem.getBoundingClientRect().top,
@@ -44,7 +47,8 @@ const Navbar = ({ scrollbar, handleTheme }) => {
     };
   }, []);
 
-  const handleSelect = (key) => {
+  const handleSelect = (key: number) => {
+    if (!scrollbar) return;
     scrollbar.scrollTo(sections[key].left, sections[key].top, 1000);
     setMenuSVG(false);
     menuSvgDisabled();
@@ -57,19 +61,19 @@ const Navbar = ({ scrollbar, handleTheme }) => {
         d: "M49.29,21L219,190.72 M21.01,49.28L190.71,219 M21,190.7L190.72,21 M49.28,218.99L219,49.29",
       },
       duration: 0.5,
-    })
+    });
     ScrollTrigger.matchMedia({
       "(orientation: landscape)": function () {
         gsap.to(".navbar_sections", {
           autoAlpha: 1,
-          duration: 0.5
-        })
+          duration: 0.5,
+        });
       },
       "(orientation: portrait)": function () {
         gsap.to(".navbar_sections", {
           autoAlpha: 1,
-          duration: 0.5
-        })
+          duration: 0.5,
+        });
       },
     });
   };
@@ -81,29 +85,29 @@ const Navbar = ({ scrollbar, handleTheme }) => {
         d: "M0,71L240,71 M0,90L240,90 M0,149L240,149 M0,168L240,168",
       },
       duration: 0.5,
-    })
+    });
     ScrollTrigger.matchMedia({
       "(orientation: landscape)": function () {
         gsap.to(".navbar_sections", {
           autoAlpha: 1,
           opacity: 1,
-          duration: 0.5
-        })
+          duration: 0.5,
+        });
       },
       "(orientation: portrait)": function () {
         gsap.to(".navbar_sections", {
           autoAlpha: 0,
-          duration: 0.5
-        })
+          duration: 0.5,
+        });
       },
     });
-  }
+  };
 
   return (
     <div className="navbar">
-      <ThemeSetter handleTheme={handleTheme} />
+      <ThemeSetter />
       <svg
-        tabIndex="0"
+        tabIndex={0}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 240 240"
         className="menusvg"
