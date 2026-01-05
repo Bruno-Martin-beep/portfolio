@@ -1,5 +1,4 @@
-import React from "react";
-import projectsList from "../../mocks/projectsList";
+import projectsList from "../../mocks/projectsList.ts";
 
 const Projects = () => {
   return (

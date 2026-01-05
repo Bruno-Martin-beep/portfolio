@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { skillsCurrent, skillsUpcoming } from "../../mocks/skillItems";
+import { useState, type JSX } from "react";
+import { skillsCurrent, skillsUpcoming } from "../../mocks/skillItems.tsx";
 import gsap from "gsap";
 
 const Skills = () => {
   const [svg, setSvg] = useState(skillsCurrent[0].svg);
-  
-  const mouseOver = (value) => {
-    setSvg(value);
+
+  const mouseOver = (svg: JSX.Element) => {
+    setSvg(svg);
     gsap.to(".bracket_gap", {
       marginLeft: "clamp(9vh, 35vw, 40vh)",
       duration: 0.5,
@@ -61,42 +61,42 @@ const Skills = () => {
       <h2>Skills</h2>
       <div className="skill_cont scrollTo">
         <div>
-        <p className="skill_text">
-          const <span className="bold upper">current</span> = [{" "}
-          {skillsCurrent.map((elem, id) => {
-            return (
-              <span
-                key={elem.name}
-                onMouseOver={() => mouseOver(elem.svg)}
-                onMouseLeave={() => mouseLeave()}
-              >
-                {" "}
-                {elem.name}
-                {id !== skillsCurrent.length - 1 && ","}
-              </span>
-            );
-          })}{" "}
-          ];
-        </p>
+          <p className="skill_text">
+            const <span className="bold upper">current</span> = [{" "}
+            {skillsCurrent.map((elem, id) => {
+              return (
+                <span
+                  key={elem.name}
+                  onMouseOver={() => mouseOver(elem.svg)}
+                  onMouseLeave={() => mouseLeave()}
+                >
+                  {" "}
+                  {elem.name}
+                  {id !== skillsCurrent.length - 1 && ","}
+                </span>
+              );
+            })}{" "}
+            ];
+          </p>
         </div>
         <div>
-        <p className="skill_text">
-          const <span className="bold upper">upcoming</span> = [{" "}
-          {skillsUpcoming.map((elem, id) => {
-            return (
-              <span
-                key={elem.name}
-                onMouseOver={() => mouseOver(elem.svg)}
-                onMouseLeave={() => mouseLeave()}
-              >
-                {" "}
-                {elem.name}
-                {id !== skillsUpcoming.length - 1 && ","}
-              </span>
-            );
-          })}{" "}
-          ];
-        </p>
+          <p className="skill_text">
+            const <span className="bold upper">upcoming</span> = [{" "}
+            {skillsUpcoming.map((elem, id) => {
+              return (
+                <span
+                  key={elem.name}
+                  onMouseOver={() => mouseOver(elem.svg)}
+                  onMouseLeave={() => mouseLeave()}
+                >
+                  {" "}
+                  {elem.name}
+                  {id !== skillsUpcoming.length - 1 && ","}
+                </span>
+              );
+            })}{" "}
+            ];
+          </p>
         </div>
         <div className="skill_icon">
           <p className="skill_bracket">[</p>

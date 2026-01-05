@@ -2,14 +2,22 @@ import superShoe from "../assets/super shoe.webp";
 import shinji from "../assets/shinji.webp";
 import solar from "../assets/solar.webp";
 
-const projectsList = [
+type Project = {
+  title: string;
+  description: string;
+  image: string;
+  linkLive: string;
+  linkRepo?: string;
+  className: string;
+};
+
+const projectsList: Array<Project> = [
   {
     title: "Solar",
     description:
       "A roof selector where you can draw structures and connect them dynamically.",
     image: solar,
     linkLive: "https://bruno-martin-solar.vercel.app/",
-    linkRepo: null,
     className: "proj_bg_green",
   },
   {

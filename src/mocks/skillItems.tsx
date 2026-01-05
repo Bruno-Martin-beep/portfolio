@@ -1,4 +1,11 @@
-export const skillsCurrent = [
+import type { JSX } from "react";
+
+type Skill = {
+  name: string;
+  svg: JSX.Element;
+};
+
+export const skillsCurrent: Array<Skill> = [
   {
     name: "Figma",
     svg: (
@@ -130,7 +137,7 @@ export const skillsCurrent = [
   },
 ];
 
-export const skillsUpcoming = [
+export const skillsUpcoming: Array<Skill> = [
   {
     name: "Blender",
     svg: (

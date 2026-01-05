@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./styles/main.scss";
-
-import useTheme from "./hooks/useTheme";
-import MobileWarning from "./components/MobileWarning";
 import Navbar from "./components/navbar/Navbar";
-import Scroller from "./components/layout/Scroller";
 import Home from "./components/layout/Home";
 import AboutMe from "./components/layout/AboutMe";
 import Projects from "./components/layout/Projects";
 import Skills from "./components/layout/Skills";
 import Contact from "./components/layout/Contact";
+import { useScrollbar } from "./hooks/useScrollbar";
 
 function App() {
-  const handleTheme = useTheme();
-  const [scrollbar, setScrollbar] = useState(null);
+  const scrollbar = useScrollbar();
 
   useEffect(() => {
     console.log(
@@ -24,18 +20,19 @@ function App() {
 
   return (
     <>
-      <MobileWarning />
-      <Navbar scrollbar={scrollbar} handleTheme={handleTheme} />
+      <Navbar scrollbar={scrollbar} />
       <div className="bg" />
       <div className="bgProj bgProj_blue" />
       <div className="bgProj bgProj_green" />
-      <Scroller setScrollbar={setScrollbar}>
-        <Home />
-        <AboutMe />
-        <Projects />
-        <Skills />
-        <Contact />
-      </Scroller>
+      <div id="my-scrollbar" className="scroller">
+        <div className="wrapper">
+          <Home />
+          <AboutMe />
+          <Projects />
+          <Skills />
+          <Contact />
+        </div>
+      </div>
     </>
   );
 }
