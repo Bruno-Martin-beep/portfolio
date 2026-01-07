@@ -5,10 +5,10 @@ const AboutMe = () => {
       <div className="about_cont scrollTo">
         <div className="about_cont2">
           <p className="about_text">
-            Hi, I’m a beginner{" "}
-            <span className="upper">front-end developer</span> {"&"}{" "}
-            <span className="upper">ui designer</span> based in Córdoba,
-            Argentina, native Spanish and beginner(A2) English speaker.
+            Hi, I am a <span className="upper">Front-End Developer</span> based
+            in Córdoba, Argentina, currently pursuing a degree in Computer
+            Science at the Universidad Nacional de Córdoba. I am a native
+            Spanish speaker with upper-intermediate English proficiency (B2).
           </p>
           <svg
             width="130"
@@ -39,8 +39,9 @@ const AboutMe = () => {
             />
           </svg>
           <p className="about_text">
-            Fascinated in learning Three.js and motion design, always ready to
-            learn new technologies, tools and knowledge.
+            I have a strong passion for 3D graphics and Three.js, which I
+            utilize to develop specialized tools. While I possess a solid
+            foundation in traditional web development.
           </p>
         </div>
       </div>
