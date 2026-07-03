@@ -1,3 +1,6 @@
+@use "../utilities/colors";
+@use "../utilities/media-queries";
+
 .projects_cont {
   display: flex;
   justify-content: space-evenly;
@@ -6,7 +9,7 @@
   min-width: 100vw;
   min-height: 100vh;
   padding: 0 15vw;
-  @include portrait {
+  @include media-queries.portrait {
     flex-direction: column;
     width: 100vw;
     min-height: 150rem;
@@ -21,7 +24,7 @@
   width: 45rem;
   height: 40rem;
   margin-top: 2.5rem;
-  @include portrait {
+  @include media-queries.portrait {
     height: 45rem;
   }
 }
@@ -64,7 +67,7 @@
 }
 
 .proj_repo path {
-  fill: $black;
+  fill: colors.$black;
 }
 
 .proj_title {
@@ -73,7 +76,7 @@
   font-size: 2.5rem;
   text-transform: uppercase;
   text-decoration: none;
-  @include portrait {
+  @include media-queries.portrait {
     font-size: 3rem;
   }
 }
@@ -85,7 +88,7 @@
 .proj_desc {
   max-width: 40rem;
   font-size: 1.5rem;
-  @include portrait {
+  @include media-queries.portrait {
     font-size: 2rem;
   }
 }

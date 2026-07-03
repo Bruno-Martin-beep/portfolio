@@ -1,3 +1,6 @@
+@use "../utilities/colors";
+@use "../utilities/media-queries";
+
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +10,9 @@
   -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
 
   &::selection {
-    @include themed {
-      color: t("bg");
-      background-color: t("text");
+    @include colors.themed {
+      color: colors.t("bg");
+      background-color: colors.t("text");
     }
   }
 
@@ -18,18 +21,18 @@
   }
 
   &:focus-visible {
-    @include themed {
-      outline-color: t("text");
+    @include colors.themed {
+      outline-color: colors.t("text");
     }
 
     outline-style: solid;
 
-    @include portrait {
+    @include media-queries.portrait {
       outline-width: 0.5vw;
       outline-offset: 1.5vw;
     }
 
-    @include landscape {
+    @include media-queries.landscape {
       outline-width: 0.5vh;
       outline-offset: 1.5vh;
     }
@@ -49,7 +52,7 @@ body {
 html {
   font-size: min(1.5vw, 1.8vh);
 
-  @include portrait {
+  @include media-queries.portrait {
     // font-size: 1vw;
   }
 }
@@ -64,8 +67,8 @@ strong {
   position: absolute;
   z-index: 0;
 
-  @include themed {
-    background-color: t("bg");
+  @include colors.themed {
+    background-color: colors.t("bg");
   }
 
   transition: background-color 0.5s ease-out;
@@ -81,14 +84,14 @@ strong {
 }
 
 .bgProj_blue {
-  @include themed {
-    background-color: t("bgBlue");
+  @include colors.themed {
+    background-color: colors.t("bgBlue");
   }
 }
 
 .bgProj_green {
-  @include themed {
-    background-color: t("bgGreen");
+  @include colors.themed {
+    background-color: colors.t("bgGreen");
   }
 }
 
@@ -105,7 +108,7 @@ strong {
 .wrapper {
   display: flex;
 
-  @include portrait {
+  @include media-queries.portrait {
     flex-direction: column;
   }
 }
@@ -124,16 +127,16 @@ strong {
   width: 60vw;
   padding: 10vh 10vw 10vh 10vw;
 
-  @include portrait {
+  @include media-queries.portrait {
     font-size: clamp(3vh, 4vw, 5vh);
   }
 
-  @include landscape {
+  @include media-queries.landscape {
     font-size: clamp(4vh, 4vw, 5vh);
   }
 
-  @include themed {
-    background-color: t("bgBlue");
+  @include colors.themed {
+    background-color: colors.t("bgBlue");
   }
 
   transition: background-color 0.5s ease-out;
@@ -143,13 +146,13 @@ strong {
   overflow: hidden;
   position: relative;
 
-  @include portrait {
+  @include media-queries.portrait {
     width: 100vw;
     min-height: 100vh;
     flex-direction: column;
   }
 
-  @include landscape {
+  @include media-queries.landscape {
     min-width: 100vw;
     height: 100vh;
   }
@@ -165,11 +168,11 @@ h1 {
   letter-spacing: 0.6vw;
   font-family: "Saol-Display", serif;
 
-  @include portrait {
+  @include media-queries.portrait {
     font-size: 16vw;
   }
 
-  @include landscape {
+  @include media-queries.landscape {
     font-size: clamp(13vh, 13vw, 30vh);
   }
 
@@ -177,8 +180,8 @@ h1 {
   font-display: swap;
   line-height: 100%;
 
-  @include themed {
-    color: t("text");
+  @include colors.themed {
+    color: colors.t("text");
   }
 
   transition: color 0.5s ease-out;
@@ -193,7 +196,7 @@ h2 {
   font-display: swap;
   line-height: 100%;
 
-  @include landscape {
+  @include media-queries.landscape {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     margin: 0 14vh 0 14vh;
@@ -201,8 +204,8 @@ h2 {
 
   text-align: center;
 
-  @include themed {
-    color: t("text");
+  @include colors.themed {
+    color: colors.t("text");
   }
 
   transition: color 0.5s ease-out;
@@ -212,8 +215,8 @@ p,
 a {
   font-family: "Montserrat", sans-serif;
 
-  @include themed {
-    color: t("text");
+  @include colors.themed {
+    color: colors.t("text");
   }
 
   transition: color 0.5s ease-out;

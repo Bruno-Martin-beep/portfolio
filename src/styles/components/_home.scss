@@ -1,3 +1,5 @@
+@use "../utilities/media-queries";
+
 .home {
   position: relative;
   display: flex;
@@ -22,10 +24,10 @@
   position: absolute;
   bottom: 3vh;
   right: 4vw;
-  @include portrait {
+  @include media-queries.portrait {
     font-size: 4vw;
   }
-  @include landscape {
+  @include media-queries.landscape {
     font-size: clamp(4vh, 2vw, 5vh);
   }
   font-family: 'Montserrat', sans-serif;

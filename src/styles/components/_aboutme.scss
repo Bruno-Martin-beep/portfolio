@@ -1,9 +1,12 @@
+@use "../utilities/colors";
+@use "../utilities/media-queries";
+
 .about_cont {
-  @include portrait {
+  @include media-queries.portrait {
     width: 100vw;
     min-height: 100vh;
   }
-  @include landscape {
+  @include media-queries.landscape {
     width: 130vw;
     height: 100vh;
   }
@@ -19,21 +22,21 @@
 
 .about_cont2 {
   display: flex;
-  @include portrait {
+  @include media-queries.portrait {
     justify-content: center;
   }
-  @include landscape {
+  @include media-queries.landscape {
     justify-content: space-between;
   }
   align-items: center;
 }
 
 .about_text {
-  @include portrait {
+  @include media-queries.portrait {
     max-width: 50vw;
     font-size: clamp(2vh, 2.5vw, 4vh);
   }
-  @include landscape {
+  @include media-queries.landscape {
     max-width: 80vw;
     font-size: clamp(3vh, 3vw, 4vh);
   }
@@ -41,13 +44,13 @@
 
 .about_icon {
   display: block;
-  @include portrait {
+  @include media-queries.portrait {
     width: clamp(10vh, 20vw, 12vh);
     height: clamp(10vh, 20vw, 12vh);
     margin-left: clamp(2vh, 8vw, 10vh);
     margin-right: clamp(2vh, 8vw, 10vh);
   }
-  @include landscape {
+  @include media-queries.landscape {
     flex-grow: 1;
     width: 15vh;
     height: 15vh;
@@ -56,8 +59,8 @@
 }
 
 .svg_color {
-  @include themed {
-    fill: t("text");
+  @include colors.themed {
+    fill: colors.t("text");
   }
   transition: fill 0.5s ease-out;
 }

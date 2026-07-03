@@ -1,3 +1,5 @@
+@use "../utilities/media-queries";
+
 .cont_cont {
   width: 80vw;
   height: 100vh;
@@ -13,19 +15,19 @@
 }
 
 .cont_text {
-  @include portrait {
+  @include media-queries.portrait {
     font-size: 3.6vw;
   }
-  @include landscape {
+  @include media-queries.landscape {
     font-size: clamp(4vh, 4vw, 8vh);
   }
 }
 
 .cont_text + .cont_text {
-  @include portrait {
+  @include media-queries.portrait {
     margin-top: 8vw;
   }
-  @include landscape {
+  @include media-queries.landscape {
     margin-top: clamp(3vh, 3vw, 4vh);
   }
 }

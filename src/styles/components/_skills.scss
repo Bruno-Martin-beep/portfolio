@@ -1,10 +1,13 @@
+@use "../utilities/colors";
+@use "../utilities/media-queries";
+
 .skill_cont {
-  @include portrait {
+  @include media-queries.portrait {
     width: 80vw;
     height: 100vh;
     justify-content: center;
   }
-  @include landscape {
+  @include media-queries.landscape {
     width: 70vw;
     height: 70vh;
     padding: 0 15vw 0 15vw;
@@ -15,16 +18,16 @@
 }
 
 .skill_cont div + div {
-  @include portrait {
+  @include media-queries.portrait {
     margin-top: 15vh;
   }
 }
 
 .skill_text {
-  @include portrait {
+  @include media-queries.portrait {
     font-size: 4vw;
   }
-  @include landscape {
+  @include media-queries.landscape {
     font-size: clamp(2vh, 2vw, 3vw);
   }
 }
@@ -48,22 +51,22 @@
 }
 
 .skill_svg_fill {
-  @include themed {
-    fill: t("text");
+  @include colors.themed {
+    fill: colors.t("text");
   }
   transition: fill 0.5s ease-out;
 }
 
 .skill_svg_fill_revert {
-  @include themed {
-    fill: t("bg");
+  @include colors.themed {
+    fill: colors.t("bg");
   }
   transition: fill 0.5s ease-out;
 }
 
 .skill_svg_stroke {
-  @include themed {
-    stroke: t("text");
+  @include colors.themed {
+    stroke: colors.t("text");
   }
   transition: stroke 0.5s ease-out;
 }

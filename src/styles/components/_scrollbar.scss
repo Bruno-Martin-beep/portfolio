@@ -1,3 +1,5 @@
+@use "../utilities/colors";
+
 .scrollbar-track.scrollbar-track-x {
   opacity: 1;
   background-color: hsla(35, 10%, 50%, 0.8);
@@ -12,8 +14,8 @@
 
 .scrollbar-thumb.scrollbar-thumb-x {
   border-radius: 0px;
-  @include themed {
-    background-color: t("thumb");
+  @include colors.themed {
+    background-color: colors.t("thumb");
   }
   transition: background-color 0.5s ease-out;
   height: 1.5vh;
@@ -21,8 +23,8 @@
 
 .scrollbar-thumb.scrollbar-thumb-y {
   border-radius: 0px;
-  @include themed {
-    background-color: t("thumb");
+  @include colors.themed {
+    background-color: colors.t("thumb");
   }
   transition: background-color 0.5s ease-out;
   width: 1.5vw;

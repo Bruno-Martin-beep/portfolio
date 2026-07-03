@@ -1,3 +1,6 @@
+@use "../utilities/colors";
+@use "../utilities/media-queries";
+
 .navbar {
   position: fixed;
   top: 0;
@@ -12,19 +15,19 @@
 
 .navbar_themes {
   display: flex;
-  @include portrait {
+  @include media-queries.portrait {
     margin-left: 6vw;
   }
-  @include landscape {
+  @include media-queries.landscape {
     margin-left: clamp(10vh, 10vw, 12vh);
   }
 }
 
 .navbar_themes > * + * {
-  @include portrait {
+  @include media-queries.portrait {
     margin-left: 2vw;
   }
-  @include landscape {
+  @include media-queries.landscape {
     margin-left: 2vh;
   }
 }
@@ -32,16 +35,16 @@
 .themeButton {
   border-radius: 50%;
   box-sizing: content-box;
-  @include themed {
-    border-color: t("text");
+  @include colors.themed {
+    border-color: colors.t("text");
   }
-  @include portrait {
+  @include media-queries.portrait {
     width: clamp(2vh, 3.5vw, 3vh);
     height: clamp(2vh, 3.5vw, 3vh);
     border-width: 0.5vw;
   }
   border-style: solid;
-  @include landscape {
+  @include media-queries.landscape {
     width: clamp(2vh, 2vw, 3vh);
     height: clamp(2vh, 2vw, 3vh);
     border-width: 0.5vh;
@@ -50,10 +53,10 @@
   cursor: pointer;
 
   &:focus-visible {
-    @include portrait {
+    @include media-queries.portrait {
       outline-offset: 0.5vw;
     }
-    @include landscape {
+    @include media-queries.landscape {
       outline-offset: 0.5vh;
     }
   }
@@ -61,30 +64,30 @@
 
 
 .lightT {
-  background-color: $light;
+  background-color: colors.$light;
 }
 
 .darkT {
-  background-color: $black;
+  background-color: colors.$black;
 }
 
 .navbar_sections {
   display: flex;
-  @include portrait {
+  @include media-queries.portrait {
     position: fixed;
     flex-direction: column;
     top: clamp(10vh, 10vw, 14vh);
     right: 5.5vw;
     padding: clamp(2.5vh, 2.5vw, 3.5vh);
     // border-radius: 4vw;
-    @include themed {
-      border: 0.5vw t("text") solid;
-      background-color: t("bg");
+    @include colors.themed {
+      border: 0.5vw colors.t("text") solid;
+      background-color: colors.t("bg");
     }
     transition: background-color 0.5s ease-out, border 0.5s ease-out;
     visibility: hidden;
   }
-  @include landscape {
+  @include media-queries.landscape {
     margin-right: clamp(10vh, 10vw, 12vh);
   }
   list-style-type: none;
@@ -93,16 +96,16 @@
 .navbar_sections button {
   background-color: transparent;
   text-align: start;
-  @include portrait {
+  @include media-queries.portrait {
     text-transform: uppercase;
     font-size: clamp(2vh, 3vw, 3.5vh);
   }
-  @include landscape{
+  @include media-queries.landscape{
     font-size: clamp(2.5vh, 2.5vw, 3.5vh);
   }
   font-family: 'Montserrat', sans-serif;
-  @include themed {
-    color: t("text");
+  @include colors.themed {
+    color: colors.t("text");
   }
   transition: color 0.5s ease-out;
   user-select: none;
@@ -110,10 +113,10 @@
 }
 
 .navbar_sections > * + * {
-  @include portrait {
+  @include media-queries.portrait {
     margin-top: 5vw;
   }
-  @include landscape {
+  @include media-queries.landscape {
     margin-left: 4vh;
   }
 }
@@ -123,15 +126,15 @@
   height: clamp(3vh, 5vw, 14vh);
   margin-right: 7.5vw;
   display: none;
-  @include portrait {
+  @include media-queries.portrait {
     display: block;
   }
   cursor: pointer;
 }
 
 .menu_svg_stroke {
-  @include themed {
-    stroke: t("text");
+  @include colors.themed {
+    stroke: colors.t("text");
   }
   transition: stroke 0.5s ease-out;
 }
