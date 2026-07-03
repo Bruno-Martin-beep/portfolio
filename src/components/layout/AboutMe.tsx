@@ -5,9 +5,9 @@ const AboutMe = () => {
       <div className="about_cont scrollTo">
         <div className="about_cont2">
           <p className="about_text">
-            Hi, I am a <span className="upper">Front-End Developer</span> based
-            in Córdoba, Argentina, currently pursuing a degree in Computer
-            Science at the Universidad Nacional de Córdoba. I am a native
+            Hi, I am a <strong>Front-End Developer</strong> based
+            in Córdoba, Argentina, currently pursuing a degree in <strong>Computer
+              Science</strong> at the Universidad Nacional de Córdoba. I am a native
             Spanish speaker with upper-intermediate English proficiency (B2).
           </p>
           <svg
@@ -39,7 +39,7 @@ const AboutMe = () => {
             />
           </svg>
           <p className="about_text">
-            I have a strong passion for 3D graphics and Three.js, which I
+            I have a strong passion for <strong>3D graphics</strong> and <strong>Three.js</strong>, which I
             utilize to develop specialized tools. While I possess a solid
             foundation in traditional web development.
           </p>

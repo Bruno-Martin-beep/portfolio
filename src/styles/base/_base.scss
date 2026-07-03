@@ -21,16 +21,19 @@
     @include themed {
       outline-color: t("text");
     }
+
     outline-style: solid;
 
     @include portrait {
       outline-width: 0.5vw;
       outline-offset: 1.5vw;
     }
+
     @include landscape {
       outline-width: 0.5vh;
       outline-offset: 1.5vh;
     }
+
     border-radius: 50vw;
   }
 }
@@ -45,9 +48,14 @@ body {
 
 html {
   font-size: min(1.5vw, 1.8vh);
+
   @include portrait {
     // font-size: 1vw;
   }
+}
+
+strong {
+  font-weight: 600;
 }
 
 .bg {
@@ -55,9 +63,11 @@ html {
   height: 100vh;
   position: absolute;
   z-index: 0;
+
   @include themed {
     background-color: t("bg");
   }
+
   transition: background-color 0.5s ease-out;
 }
 
@@ -75,6 +85,7 @@ html {
     background-color: t("bgBlue");
   }
 }
+
 .bgProj_green {
   @include themed {
     background-color: t("bgGreen");
@@ -93,6 +104,7 @@ html {
 
 .wrapper {
   display: flex;
+
   @include portrait {
     flex-direction: column;
   }
@@ -111,30 +123,37 @@ html {
 .mobileDevice_text {
   width: 60vw;
   padding: 10vh 10vw 10vh 10vw;
+
   @include portrait {
     font-size: clamp(3vh, 4vw, 5vh);
   }
+
   @include landscape {
     font-size: clamp(4vh, 4vw, 5vh);
   }
+
   @include themed {
     background-color: t("bgBlue");
   }
+
   transition: background-color 0.5s ease-out;
 }
 
 .section {
   overflow: hidden;
   position: relative;
+
   @include portrait {
     width: 100vw;
     min-height: 100vh;
     flex-direction: column;
   }
+
   @include landscape {
     min-width: 100vw;
     height: 100vh;
   }
+
   display: flex;
   align-items: center;
   z-index: 5;
@@ -145,18 +164,23 @@ h1 {
   margin: 0 0 0 14vw;
   letter-spacing: 0.6vw;
   font-family: "Saol-Display", serif;
+
   @include portrait {
     font-size: 16vw;
   }
+
   @include landscape {
     font-size: clamp(13vh, 13vw, 30vh);
   }
+
   font-weight: 400;
   font-display: swap;
   line-height: 100%;
+
   @include themed {
     color: t("text");
   }
+
   transition: color 0.5s ease-out;
 }
 
@@ -168,24 +192,30 @@ h2 {
   font-weight: 400;
   font-display: swap;
   line-height: 100%;
+
   @include landscape {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     margin: 0 14vh 0 14vh;
   }
+
   text-align: center;
+
   @include themed {
     color: t("text");
   }
+
   transition: color 0.5s ease-out;
 }
 
 p,
 a {
   font-family: "Montserrat", sans-serif;
+
   @include themed {
     color: t("text");
   }
+
   transition: color 0.5s ease-out;
 }
 
