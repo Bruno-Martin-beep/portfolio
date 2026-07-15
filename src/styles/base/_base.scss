@@ -43,9 +43,8 @@
 
 html,
 body {
-  overflow: hidden;
   overscroll-behavior: none;
-  width: 100vw;
+  // width: 100vw;
   height: 100vh;
 }
 
@@ -64,11 +63,19 @@ strong {
 .bg {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 0;
 
   @include colors.themed {
     background-color: colors.t("bg");
+  }
+
+  @include media-queries.portrait {
+    width: calc(100vw - 15px);
+  }
+
+  @include media-queries.landscape {
+    height: calc(100vh - 15px);
   }
 
   transition: background-color 0.5s ease-out;
@@ -77,10 +84,18 @@ strong {
 .bgProj {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 3;
   transition: background-color 0.5s ease-out;
   opacity: 0;
+
+  @include media-queries.portrait {
+    width: calc(100vw - 15px);
+  }
+
+  @include media-queries.landscape {
+    height: calc(100vh - 15px);
+  }
 }
 
 .bgProj_blue {
@@ -96,13 +111,17 @@ strong {
 }
 
 #my-scrollbar {
-  overflow: hidden;
   width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
   z-index: 5;
   display: flex;
+
+  @include media-queries.portrait {
+    width: calc(100vw - 15px);
+  }
+
+  @include media-queries.landscape {
+    height: calc(100vh - 15px);
+  }
 }
 
 .wrapper {
@@ -113,48 +132,17 @@ strong {
   }
 }
 
-.mobileDevice {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 50;
-}
-
-.mobileDevice_text {
-  width: 60vw;
-  padding: 10vh 10vw 10vh 10vw;
-
-  @include media-queries.portrait {
-    font-size: clamp(3vh, 4vw, 5vh);
-  }
-
-  @include media-queries.landscape {
-    font-size: clamp(4vh, 4vw, 5vh);
-  }
-
-  @include colors.themed {
-    background-color: colors.t("bgBlue");
-  }
-
-  transition: background-color 0.5s ease-out;
-}
-
 .section {
   overflow: hidden;
   position: relative;
 
   @include media-queries.portrait {
-    width: 100vw;
-    min-height: 100vh;
+    width: calc(100vw - 15px);
     flex-direction: column;
   }
 
   @include media-queries.landscape {
-    min-width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 15px);
   }
 
   display: flex;

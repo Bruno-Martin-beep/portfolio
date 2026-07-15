@@ -1,107 +1,43 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import Scrollbar from "smooth-scrollbar";
-import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 import { useMediaQuery } from "usehooks-ts";
+import { euclideanModulo, damp } from "../utils/Math";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Delta = {
-  x: number;
-  y: number;
-};
-
-class VerticalScrollPlugin extends Scrollbar.ScrollbarPlugin {
-  static pluginName = "verticalScroll";
-
-  transformDelta({ x, y }: Delta, fromEvent: Event) {
-    if (!/wheel/.test(fromEvent.type)) {
-      return { x, y };
-    }
-
-    return {
-      y: Math.abs(x) > Math.abs(y) ? x : y,
-      x: 0,
-    };
-  }
-}
-
-class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
-  static pluginName = "horizontalScroll";
-
-  transformDelta({ x, y }: Delta, fromEvent: Event) {
-    if (!/wheel/.test(fromEvent.type)) {
-      return { x, y };
-    }
-
-    return {
-      y: 0,
-      x: Math.abs(x) > Math.abs(y) ? x : y,
-    };
-  }
-}
 
 export const useScrollbar = () => {
   const horizontal = useMediaQuery("(orientation: landscape)");
-  const [scrollbar, setScrollbar] = useState<Scrollbar | null>(null);
-
+  const [scrollbar, setScrollbar] = useState<Lenis | null>(null);
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    Scrollbar.use(
-      horizontal ? HorizontalScrollPlugin : VerticalScrollPlugin,
-      OverscrollPlugin
-    );
-
-    const bodyScrollBar = Scrollbar.init(
-      document.querySelector("#my-scrollbar") as HTMLElement,
+    // Initialize a new Lenis instance for smooth scrolling
+    const lenis = new Lenis(
       {
-        damping: 0.075,
-        alwaysShowTracks: true,
-        continuousScrolling: true,
-        delegateTo: document,
+        autoRaf: true,
+        orientation: horizontal ? "horizontal" : "vertical"
       }
     );
-    setScrollbar(bodyScrollBar);
 
-    ScrollTrigger.scrollerProxy("#my-scrollbar", {
-      scrollTop(value) {
-        if (arguments.length && value) {
-          bodyScrollBar.scrollTop = value;
-        }
-        return bodyScrollBar.scrollTop;
-      },
-      scrollLeft(value) {
-        if (arguments.length && value) {
-          bodyScrollBar.scrollLeft = value;
-        }
-        return bodyScrollBar.scrollLeft;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-    });
-    bodyScrollBar.addListener(ScrollTrigger.update);
+    setScrollbar(lenis)
+
+    // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
+    lenis.on("scroll", ScrollTrigger.update);
 
     //
     // backColor
     //
 
     const bgAnim = (color: string) =>
-      gsap.fromTo(
+      gsap.to(
         `.bgProj_` + color,
-        { opacity: 0 },
         { opacity: 1, duration: 0.6 }
       );
     ScrollTrigger.create({
       animation: bgAnim("blue"),
       trigger: ".proj_bg_blue",
-      scroller: ".scroller",
       horizontal: horizontal,
       toggleActions: "play reverse play reverse",
       start: "top-=100% top",
@@ -110,7 +46,6 @@ export const useScrollbar = () => {
     ScrollTrigger.create({
       animation: bgAnim("green"),
       trigger: ".proj_bg_green",
-      scroller: ".scroller",
       horizontal: horizontal,
       toggleActions: "play reverse play reverse",
       start: "top-=100% top",
@@ -121,67 +56,66 @@ export const useScrollbar = () => {
     // asteriskRotation
     //
 
-    const tween = gsap
-      .to(".asterisk", {
-        rotation: 360,
-        duration: 4,
-        ease: "none",
-        repeat: -1,
-      })
-      .totalProgress(0.5);
-    const upVel = gsap.timeline();
-    const clampVel = gsap.utils.clamp(-4, 4);
-    ScrollTrigger.create({
-      trigger: ".scroller",
-      scroller: ".scroller",
-      horizontal,
-      start: "center center",
-      end: "+=250%",
-      onUpdate({ getVelocity }) {
-        const timeScale = clampVel(getVelocity() / 50);
-        upVel
-          .clear()
-          .to(tween, {
-            duration: 1,
-            timeScale,
-          })
-          .to(tween, {
-            duration: 1,
-            timeScale,
-          });
-      },
-    });
+    let currentRotation = 0;
+    let currentVelocity = 1.5; // Base low speed
+    let targetVelocity = 1.5;
+    let baseVelocity = 1.5; // Remembers the direction of the last scroll
+    const MAX_SPEED = 5;
+    let reqId: number;
+    let lastTime: number | undefined;
 
-    //
-    // parallax
-    //
+    const asterisks = document.querySelectorAll<HTMLElement>(".asterisk");
 
-    const parallax = gsap.to(
-      "h1",
-      horizontal
-        ? {
-            x: "25%",
-          }
-        : {
-            y: "22.5vh",
-          }
-    );
-    ScrollTrigger.create({
-      animation: parallax,
-      trigger: ".scroller",
-      scroller: ".scroller",
-      horizontal,
-      start: "top top",
-      end: "+=100% end",
-      scrub: true,
-    });
+    const updateRotation = (time: number) => {
+      if (lastTime === undefined) {
+        lastTime = time;
+      }
+      const dt = (time - lastTime) / 1000; // Convert ms to seconds
+      lastTime = time;
+
+      // Damp current velocity towards target velocity for smooth transitions
+      // Lower lambda values give it more "ease" / sluggishness (e.g. 2.0 instead of 6.3)
+      currentVelocity = damp(currentVelocity, targetVelocity, 2.5, dt);
+      currentRotation = euclideanModulo(currentRotation + currentVelocity, 360);
+
+      asterisks.forEach((el) => {
+        el.style.transform = `rotate(${currentRotation}deg)`;
+      });
+
+      // Slowly decay target velocity back to the base velocity
+      // lambda = 1.2 roughly matches lerp factor 0.02 at 60fps
+      targetVelocity = damp(targetVelocity, baseVelocity, 2.0, dt);
+
+      reqId = requestAnimationFrame(updateRotation);
+    };
+
+    reqId = requestAnimationFrame(updateRotation);
+
+    const handleScroll = ({ velocity }: Lenis) => {
+      if (Math.abs(velocity) <= 0) return;
+
+      // Multiplier controls the rotation sensitivity
+      const newVelocity = velocity * 0.5;
+
+      // Update the base velocity direction to continue spinning that way when idle
+      baseVelocity = velocity >= 0 ? 1.5 : -1.5;
+
+      // Ensure scrolling doesn't make the asterisk spin slower than the idle base velocity
+      if (velocity > 0) {
+        targetVelocity = Math.max(baseVelocity, Math.min(MAX_SPEED, targetVelocity + newVelocity));
+      } else {
+        targetVelocity = Math.max(-MAX_SPEED, Math.min(baseVelocity, targetVelocity + newVelocity));
+      }
+    };
+
+    lenis.on("scroll", handleScroll);
 
     return () => {
-      bodyScrollBar.removeListener(ScrollTrigger.update);
-      bodyScrollBar.destroy();
+      lenis.destroy();
       ScrollTrigger.killAll();
-    };
-  }, [horizontal]);
+      cancelAnimationFrame(reqId);
+    }
+  }, [horizontal])
 
   return scrollbar;
 };

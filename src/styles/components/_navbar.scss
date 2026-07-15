@@ -11,22 +11,29 @@
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+
+  @include media-queries.portrait {
+    width: calc(100vw - 15px);
+  }
 }
 
 .navbar_themes {
   display: flex;
+
   @include media-queries.portrait {
     margin-left: 6vw;
   }
+
   @include media-queries.landscape {
     margin-left: clamp(10vh, 10vw, 12vh);
   }
 }
 
-.navbar_themes > * + * {
+.navbar_themes>*+* {
   @include media-queries.portrait {
     margin-left: 2vw;
   }
+
   @include media-queries.landscape {
     margin-left: 2vh;
   }
@@ -35,20 +42,25 @@
 .themeButton {
   border-radius: 50%;
   box-sizing: content-box;
+
   @include colors.themed {
     border-color: colors.t("text");
   }
+
   @include media-queries.portrait {
     width: clamp(2vh, 3.5vw, 3vh);
     height: clamp(2vh, 3.5vw, 3vh);
     border-width: 0.5vw;
   }
+
   border-style: solid;
+
   @include media-queries.landscape {
     width: clamp(2vh, 2vw, 3vh);
     height: clamp(2vh, 2vw, 3vh);
     border-width: 0.5vh;
   }
+
   transition: border 0.5s ease-out;
   cursor: pointer;
 
@@ -56,6 +68,7 @@
     @include media-queries.portrait {
       outline-offset: 0.5vw;
     }
+
     @include media-queries.landscape {
       outline-offset: 0.5vh;
     }
@@ -73,49 +86,62 @@
 
 .navbar_sections {
   display: flex;
+
   @include media-queries.portrait {
     position: fixed;
     flex-direction: column;
     top: clamp(10vh, 10vw, 14vh);
     right: 5.5vw;
     padding: clamp(2.5vh, 2.5vw, 3.5vh);
+
     // border-radius: 4vw;
     @include colors.themed {
       border: 0.5vw colors.t("text") solid;
       background-color: colors.t("bg");
     }
-    transition: background-color 0.5s ease-out, border 0.5s ease-out;
+
+    transition: background-color 0.5s ease-out,
+    border 0.5s ease-out;
     visibility: hidden;
   }
+
   @include media-queries.landscape {
     margin-right: clamp(10vh, 10vw, 12vh);
   }
+
   list-style-type: none;
 }
 
 .navbar_sections button {
   background-color: transparent;
   text-align: start;
+
   @include media-queries.portrait {
     text-transform: uppercase;
     font-size: clamp(2vh, 3vw, 3.5vh);
   }
-  @include media-queries.landscape{
+
+  @include media-queries.landscape {
     font-size: clamp(2.5vh, 2.5vw, 3.5vh);
   }
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: 'Montserrat',
+  sans-serif;
+
   @include colors.themed {
     color: colors.t("text");
   }
+
   transition: color 0.5s ease-out;
   user-select: none;
   cursor: pointer;
 }
 
-.navbar_sections > * + * {
+.navbar_sections>*+* {
   @include media-queries.portrait {
     margin-top: 5vw;
   }
+
   @include media-queries.landscape {
     margin-left: 4vh;
   }
@@ -126,9 +152,11 @@
   height: clamp(3vh, 5vw, 14vh);
   margin-right: 7.5vw;
   display: none;
+
   @include media-queries.portrait {
     display: block;
   }
+
   cursor: pointer;
 }
 
@@ -136,5 +164,6 @@
   @include colors.themed {
     stroke: colors.t("text");
   }
+
   transition: stroke 0.5s ease-out;
 }

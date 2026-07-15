@@ -5,9 +5,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
   z-index: 5;
+
+  @include media-queries.portrait {
+    width: calc(100vw - 15px);
+    height: 100dvh;
+  }
+
+  @include media-queries.landscape {
+    min-width: 100vw;
+    height: calc(100vh - 15px);
+  }
 }
 
 .home h1:nth-child(1)::before {
@@ -24,11 +32,15 @@
   position: absolute;
   bottom: 3vh;
   right: 4vw;
+
   @include media-queries.portrait {
     font-size: 4vw;
   }
+
   @include media-queries.landscape {
     font-size: clamp(4vh, 2vw, 5vh);
   }
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: 'Montserrat',
+  sans-serif;
 }

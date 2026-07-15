@@ -1,57 +1,57 @@
 import { useEffect, useState } from "react";
 import ThemeSetter from "./ThemeSetter.tsx";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import type { Scrollbar } from "smooth-scrollbar/scrollbar";
+import type Lenis from "lenis";
+import { useMediaQuery } from "usehooks-ts";
 
-const Navbar = ({ scrollbar }: { scrollbar: Scrollbar | null }) => {
-  const [sections, setSections] = useState<
-    Array<{ top: number; left: number }>
-  >([]);
+const Navbar = ({ scrollbar }: { scrollbar: Lenis | null }) => {
+  const horizontal = useMediaQuery("(orientation: landscape)");
   const [menuSVG, setMenuSVG] = useState(false);
-  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    const GetPositions = () => {
-      const getSections = document.querySelectorAll(".scrollTo");
-      const positions: Array<{ top: number; left: number }> = [];
-      getSections.forEach((elem) =>
-        positions.push({
-          top: elem.getBoundingClientRect().top,
-          left: elem.getBoundingClientRect().left,
-        })
-      );
-
-      if (positions[0].left < 0) {
-        const homePosition = positions[0].left;
-        positions.forEach((elem) => {
-          elem.left = elem.left - homePosition;
-        });
+    if (horizontal) {
+      gsap.to(".navbar_sections", {
+        autoAlpha: 1,
+        opacity: 1,
+        duration: 0.5,
+      });
+    } else if (menuSVG) {
+      gsap.to(".navbar_sections", {
+        autoAlpha: 1,
+        opacity: 1,
+        duration: 0.5,
+      });
+    } else {
+      const sections = document.querySelector<HTMLElement>(".navbar_sections")
+      if (sections) {
+        sections.style.opacity = "0";
+        sections.style.visibility = "hidden";
       }
+      gsap.to(".navbar_sections", {
+        autoAlpha: 0,
+        duration: 0.5,
+      });
+    }
 
-      if (positions[0].top < 0) {
-        const homePosition = positions[0].top;
-        positions.forEach((elem) => {
-          elem.top = elem.top - homePosition;
-        });
-      }
 
-      setSections(positions);
-    };
-    // GetPositions();
-    const fixPosition = setTimeout(() => GetPositions(), 0);
-    window.addEventListener("resize", GetPositions);
-    return () => {
-      window.removeEventListener("resize", GetPositions);
-      clearTimeout(fixPosition);
-    };
-  }, []);
+  }, [horizontal])
+
+
 
   const handleSelect = (key: number) => {
     if (!scrollbar) return;
-    scrollbar.scrollTo(sections[key].left, sections[key].top, 1000);
+
+    const getSections = document.querySelectorAll<HTMLElement>(".scrollTo");
+    const targetSection = getSections[key];
+
+    if (targetSection) {
+      scrollbar.scrollTo(targetSection, {
+        duration: 1,
+      });
+    }
+
     setMenuSVG(false);
-    menuSvgDisabled();
+    if (!horizontal) menuSvgDisabled();
   };
 
   const menuSvgActive = () => {
@@ -62,19 +62,10 @@ const Navbar = ({ scrollbar }: { scrollbar: Scrollbar | null }) => {
       },
       duration: 0.5,
     });
-    ScrollTrigger.matchMedia({
-      "(orientation: landscape)": function () {
-        gsap.to(".navbar_sections", {
-          autoAlpha: 1,
-          duration: 0.5,
-        });
-      },
-      "(orientation: portrait)": function () {
-        gsap.to(".navbar_sections", {
-          autoAlpha: 1,
-          duration: 0.5,
-        });
-      },
+
+    gsap.to(".navbar_sections", {
+      autoAlpha: 1,
+      duration: 0.5,
     });
   };
 
@@ -86,20 +77,9 @@ const Navbar = ({ scrollbar }: { scrollbar: Scrollbar | null }) => {
       },
       duration: 0.5,
     });
-    ScrollTrigger.matchMedia({
-      "(orientation: landscape)": function () {
-        gsap.to(".navbar_sections", {
-          autoAlpha: 1,
-          opacity: 1,
-          duration: 0.5,
-        });
-      },
-      "(orientation: portrait)": function () {
-        gsap.to(".navbar_sections", {
-          autoAlpha: 0,
-          duration: 0.5,
-        });
-      },
+    gsap.to(".navbar_sections", {
+      autoAlpha: 0,
+      duration: 0.5,
     });
   };
 

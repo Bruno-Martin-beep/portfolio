@@ -24,7 +24,7 @@ function App() {
       <div className="bg" />
       <div className="bgProj bgProj_blue" />
       <div className="bgProj bgProj_green" />
-      <div id="my-scrollbar" className="scroller">
+      <div id="my-scrollbar">
         <div className="wrapper">
           <Home />
           <AboutMe />
