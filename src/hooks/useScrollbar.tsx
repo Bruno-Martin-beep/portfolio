@@ -13,6 +13,16 @@ export const useScrollbar = () => {
   const horizontal = useMediaQuery("(orientation: landscape)");
   const [scrollbar, setScrollbar] = useState<Lenis | null>(null);
   useEffect(() => {
+    // Calculate the real scrollbar size and set it as CSS variables
+    const updateScrollbarSize = () => {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      const scrollbarHeight = window.innerHeight - document.documentElement.clientHeight;
+      document.documentElement.style.setProperty("--sb-w", `${scrollbarWidth}px`);
+      document.documentElement.style.setProperty("--sb-h", `${scrollbarHeight}px`);
+    };
+    updateScrollbarSize();
+    window.addEventListener("resize", updateScrollbarSize);
+
     // Initialize a new Lenis instance for smooth scrolling
     const lenis = new Lenis(
       {
@@ -114,6 +124,7 @@ export const useScrollbar = () => {
       lenis.destroy();
       ScrollTrigger.killAll();
       cancelAnimationFrame(reqId);
+      window.removeEventListener("resize", updateScrollbarSize);
     }
   }, [horizontal])
 

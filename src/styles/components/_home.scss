@@ -8,13 +8,13 @@
   z-index: 5;
 
   @include media-queries.portrait {
-    width: calc(100vw - 15px);
+    width: calc(100vw - var(--sb-w, 0px));
     height: 100dvh;
   }
 
   @include media-queries.landscape {
     min-width: 100vw;
-    height: calc(100vh - 15px);
+    height: calc(100vh - var(--sb-h, 0px));
   }
 }
 

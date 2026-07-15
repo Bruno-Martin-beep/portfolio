@@ -13,7 +13,7 @@
   z-index: 100;
 
   @include media-queries.portrait {
-    width: calc(100vw - 15px);
+    width: calc(100vw - var(--sb-w, 0px));
   }
 }
 

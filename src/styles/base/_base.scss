@@ -71,11 +71,11 @@ strong {
   }
 
   @include media-queries.portrait {
-    width: calc(100vw - 15px);
+    width: calc(100vw - var(--sb-w, 0px));
   }
 
   @include media-queries.landscape {
-    height: calc(100vh - 15px);
+    height: calc(100vh - var(--sb-h, 0px));
   }
 
   transition: background-color 0.5s ease-out;
@@ -90,11 +90,11 @@ strong {
   opacity: 0;
 
   @include media-queries.portrait {
-    width: calc(100vw - 15px);
+    width: calc(100vw - var(--sb-w, 0px));
   }
 
   @include media-queries.landscape {
-    height: calc(100vh - 15px);
+    height: calc(100vh - var(--sb-h, 0px));
   }
 }
 
@@ -116,11 +116,11 @@ strong {
   display: flex;
 
   @include media-queries.portrait {
-    width: calc(100vw - 15px);
+    width: calc(100vw - var(--sb-w, 0px));
   }
 
   @include media-queries.landscape {
-    height: calc(100vh - 15px);
+    height: calc(100vh - var(--sb-h, 0px));
   }
 }
 
@@ -137,12 +137,12 @@ strong {
   position: relative;
 
   @include media-queries.portrait {
-    width: calc(100vw - 15px);
+    width: calc(100vw - var(--sb-w, 0px));
     flex-direction: column;
   }
 
   @include media-queries.landscape {
-    height: calc(100vh - 15px);
+    height: calc(100vh - var(--sb-h, 0px));
   }
 
   display: flex;
