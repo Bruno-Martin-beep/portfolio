@@ -60,7 +60,7 @@ export const useScrollbar = () => {
     let currentVelocity = 1.5; // Base low speed
     let targetVelocity = 1.5;
     let baseVelocity = 1.5; // Remembers the direction of the last scroll
-    const MAX_SPEED = 5;
+    const MAX_SPEED = 6;
     let reqId: number;
     let lastTime: number | undefined;
 
@@ -75,7 +75,7 @@ export const useScrollbar = () => {
 
       // Damp current velocity towards target velocity for smooth transitions
       // Lower lambda values give it more "ease" / sluggishness (e.g. 2.0 instead of 6.3)
-      currentVelocity = damp(currentVelocity, targetVelocity, 2.5, dt);
+      currentVelocity = damp(currentVelocity, targetVelocity, 3.0, dt);
       currentRotation = euclideanModulo(currentRotation + currentVelocity, 360);
 
       asterisks.forEach((el) => {
@@ -84,7 +84,7 @@ export const useScrollbar = () => {
 
       // Slowly decay target velocity back to the base velocity
       // lambda = 1.2 roughly matches lerp factor 0.02 at 60fps
-      targetVelocity = damp(targetVelocity, baseVelocity, 2.0, dt);
+      targetVelocity = damp(targetVelocity, baseVelocity, 3.0, dt);
 
       reqId = requestAnimationFrame(updateRotation);
     };
